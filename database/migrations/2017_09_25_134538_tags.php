@@ -21,6 +21,7 @@ class Tags extends Migration
                 ->references('id')->on('tasks')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 

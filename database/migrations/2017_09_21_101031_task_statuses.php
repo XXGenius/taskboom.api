@@ -16,6 +16,7 @@ class TaskStatuses extends Migration
         Schema::create('task_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->timestamps();
         });
     }
 

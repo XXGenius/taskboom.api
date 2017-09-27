@@ -67,10 +67,18 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->post('role','UserRoleController@createUserRole');
 
-    $router->put('role/{id}','UserRoleController@updateUserRoles');
+    $router->put('role/{id}','UserRoleController@updateUserRole');
 
     $router->delete('role/{id}','UserRoleController@deleteUserRole');
 
     $router->get('roles','UserRoleController@index');
+
+    $router->post('usergroup','UserGroupController@createUserGroup');
+
+    $router->put('usergroup/{id}','UserGroupController@updateUserGroup');
+
+    $router->delete('usergroup/{id}','UserGroupController@deleteUserGroup');
+
+    $router->get('usergroups','UserGroupController@index');
 
 });

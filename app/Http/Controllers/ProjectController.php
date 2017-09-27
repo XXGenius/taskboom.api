@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     public function createProject(Request $request){
-        $project = Project::create($request->all());
+        $input = $request->all();
+        $project = Project::create($input);
         return response()->json($project);
     }
 

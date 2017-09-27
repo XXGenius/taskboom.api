@@ -19,6 +19,7 @@ class TaskGroups extends Migration
             $table->integer('day');
             $table->integer('month');
             $table->integer('year');
+            $table->timestamps();
         });
     }
 

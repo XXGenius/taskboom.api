@@ -17,6 +17,7 @@ class ExpLevels extends Migration
             $table->increments('id');
             $table->integer('exp');
             $table->integer('level');
+            $table->timestamps();
         });
     }
 
