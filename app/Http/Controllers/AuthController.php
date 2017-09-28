@@ -16,6 +16,10 @@ class AuthController extends Controller
 {
     public function register(Request $request){
         $user = User::create($request->all());
+        $password = $request->input('password');
+        if(!$password){
+            return response()->json('Enter the password!');
+        }
         return response()->json($user);
     }
 
