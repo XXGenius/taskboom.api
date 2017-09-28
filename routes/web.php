@@ -81,4 +81,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('usergroups','UserGroupController@index');
 
+    $router->get('register','AuthController@register');
+
+    $router->get('login','AuthController@login');
+
 });
