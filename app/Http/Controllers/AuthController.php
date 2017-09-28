@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    private $token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
+
     public function register(Request $request){
         $password = $request->input('password');
         if(!$password){
@@ -27,12 +29,18 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $user = User::where([['email','=',$email],['password','=', $password]])->get();
-        if(count($user) == 0) {
-            return response()->json('User not exist');
+        $token = $request->input('token');
+        if($token == $this->token){
+            $email = $request->input('email');
+            $password = $request->input('password');
+            $user = User::where([['email','=',$email],['password','=', $password]])->get();
+            if(count($user) == 0) {
+                return response()->json('User not exist');
+            }
+            return response()->json($user);
+        }else{
+            return response()->json('The token does not match');
         }
-        return response()->json($user);
+
     }
 }
