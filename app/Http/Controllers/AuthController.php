@@ -22,7 +22,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $email = $request->input('email');
-        $user = User::where('email','=',$email)->get();
+        $password = $request->input('password');
+        $user = User::where([['email','=',$email],['password','=', $password]])->get();
+        if(!$user){
+            return response()->json('User not exist');
+        }
         return response()->json($user);
     }
 }
