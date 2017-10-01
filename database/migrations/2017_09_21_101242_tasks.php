@@ -28,11 +28,7 @@ class Tasks extends Migration
                 ->references('id')->on('projects')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer('parent_id')->unsigned()->default(1);
-            $table->foreign('parent_id')
-                ->references('id')->on('tasks')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->integer('parent_id')->unsigned()->default(0);
             $table->integer('sort')->unsigned()->default(0);
         });
     }

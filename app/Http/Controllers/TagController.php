@@ -15,27 +15,51 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
     public function createTag(Request $request){
-        $tag = Tag::create($request->all());
-        return response()->json($tag);
+        $token = $request->input('token');
+        if($token == $this->token){
+            $tag = Tag::create($request->all());
+            return response()->json($tag);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
     public function updateTag(Request $request, $id){
-        $tag  = Tag::find($id);
-        $tag->make = $request->input('make');
-        $tag->save();
-        return response()->json($tag);
+        $token = $request->input('token');
+        if($token == $this->token){
+            $tag  = Tag::find($id);
+            $tag->make = $request->input('make');
+            $tag->save();
+            return response()->json($tag);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function deleteTag($id){
-        $tag  = Tag::find($id);
-        $tag->delete();
-        return response()->json('Removed successfully.');
+    public function deleteTag(Request $request, $id){
+        $token = $request->input('token');
+        if($token == $this->token){
+            $tag  = Tag::find($id);
+            $tag->delete();
+            return response()->json('Removed successfully.');
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $tag = Tag::all();
-        return response()->json($tag);
+        $token = $request->input('token');
+        if($token == $this->token){
+            $tag = Tag::all();
+            return response()->json($tag);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
 }

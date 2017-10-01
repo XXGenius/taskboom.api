@@ -16,25 +16,52 @@ use Illuminate\Http\Request;
 class TaskGroupController extends Controller
 {
     public function createDay(Request $request){
-        $taskGroup = TaskGroup::create($request->all());
-        return response()->json($taskGroup);
+        $token = $request->input('token');
+        if($token == $this->token){
+            $taskGroup = TaskGroup::create($request->all());
+            return response()->json($taskGroup);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function updateDay(Request $request, $id){
-        $taskGroup  = TaskGroup::find($id);
-        $taskGroup->make = $request->input('make');
-        $taskGroup->save();
-        return response()->json($taskGroup);
+    public function updateDay(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $taskGroup  = TaskGroup::find($id);
+            $taskGroup->make = $request->input('make');
+            $taskGroup->save();
+            return response()->json($taskGroup);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function deleteDay($id){
-        $taskGroup  = TaskGroup::find($id);
-        $taskGroup->delete();
-        return response()->json('Removed successfully.');
+    public function deleteDay(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $taskGroup  = TaskGroup::find($id);
+            $taskGroup->delete();
+            return response()->json('Removed successfully.');
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function index(){
-        $taskGroup  = TaskGroup::all();
-        return response()->json($taskGroup);
+    public function index(Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $taskGroup  = TaskGroup::all();
+            return response()->json($taskGroup);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 }

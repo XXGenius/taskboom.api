@@ -14,16 +14,22 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    private $token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
+
 
     public function register(Request $request){
-        $password = $request->input('password');
-        if(!$password){
-            return response()->json('Enter the password!');
+        $token = $request->input('token');
+        if($token == $this->token){
+            $password = $request->input('password');
+            if(!$password){
+                return response()->json('Enter the password!');
+            }else{
+                $user = User::create($request->all());
+                return response()->json($user);
+            }
         }else{
-            $user = User::create($request->all());
-            return response()->json($user);
+            return response()->json('The token does not match');
         }
+
 
     }
 

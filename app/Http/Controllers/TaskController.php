@@ -12,26 +12,53 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function createTask(Request $request){
-        $task = Task::create($request->all());
-        return response()->json($task);
+    public function createTask(Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $task = Task::create($request->all());
+            return response()->json($task);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function updateTask(Request $request, $id){
-        $task  = Task::find($id);
-        $task->make = $request->input('make');
-        $task->save();
-        return response()->json($task);
+    public function updateTask(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $task  = Task::find($id);
+            $task->make = $request->input('make');
+            $task->save();
+            return response()->json($task);
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function deleteTask($id){
-        $task  = Task::find($id);
-        $task->delete();
-        return response()->json('Removed successfully.');
+    public function deleteTask(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $task  = Task::find($id);
+            $task->delete();
+            return response()->json('Removed successfully.');
+        }else{
+            return response()->json('The token does not match');
+        }
+
     }
 
-    public function index(){
-        $tasks  = Task::all();
-        return response()->json($tasks);
+    public function index(Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $tasks  = Task::all();
+            return response()->json($tasks);
+        }else{
+            return response()->json('The token does not match');
+        }
     }
 }
