@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $fillable = [
-        'text'
+        'text', 'task_group_id'
     ];
 }
