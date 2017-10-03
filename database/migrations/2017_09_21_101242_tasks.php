@@ -17,7 +17,6 @@ class Tasks extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('text');
-            $table->boolean('checked');
             $table->timestamps();
             $table->integer('group_task_id')->unsigned()->default(1);
             $table->foreign('group_task_id')
