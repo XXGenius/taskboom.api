@@ -16,6 +16,8 @@ class TaskStatusController extends Controller
 {
     public function createTaskStatus(Request $request)
     {
+//        var_dump($request);
+
         $token = $request->input('token');
         if($token == $this->token){
             $taskStatus = TaskStatus::create($request->all());
