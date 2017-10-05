@@ -53,6 +53,17 @@ class TaskGroupController extends Controller
 
     }
 
+    public function getDayById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $day  = TaskGroup::find($id)->get();
+            return response()->json($day);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

@@ -50,6 +50,17 @@ class ExpLvlController extends Controller
 
     }
 
+    public function getLvlById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $lvl  = ExpLvl::find($id)->get();
+            return response()->json($lvl);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

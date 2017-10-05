@@ -53,6 +53,17 @@ class UserRoleController extends Controller
 
     }
 
+    public function getUserRoleById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $userRole  = UserRole::find($id)->get();
+            return response()->json($userRole);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

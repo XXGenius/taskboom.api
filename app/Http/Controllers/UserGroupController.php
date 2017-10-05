@@ -53,6 +53,17 @@ class UserGroupController extends Controller
 
     }
 
+    public function getUserGroupById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $userGroup  = UserGroup::find($id)->get();
+            return response()->json($userGroup);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

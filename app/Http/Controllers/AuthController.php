@@ -15,6 +15,52 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
 
+    public function index(Request $request)
+    {
+        $token = $request->input('token');
+        if ($token == $this->token) {
+            $users = User::all();
+            return response()->json($users);
+        } else {
+            return response()->json('The token does not match');
+        }
+    }
+
+    public function deleteUser(Request $request, $id){
+        $token = $request->input('token');
+        if($token == $this->token){
+            $user  = User::find($id);
+            $user->delete();
+            return response()->json('Removed successfully.');
+        }else{
+            return response()->json('The token does not match');
+        }
+
+    }
+
+    public function createUser(Request $request){
+        $token = $request->input('token');
+        if($token == $this->token){
+            $user = User::create($request->all());
+            return response()->json($user);
+        }else{
+            return response()->json('The token does not match');
+        }
+
+    }
+
+    public function updateUser(Request $request, $id){
+        $token = $request->input('token');
+        if($token == $this->token){
+            $user  = User::find($id);
+            $user->make = $request->all();
+            $user->save();
+            return response()->json($user);
+        }else{
+            return response()->json('The token does not match');
+        }
+
+    }
 
     public function register(Request $request){
         $token = $request->input('token');
@@ -31,6 +77,17 @@ class AuthController extends Controller
         }
 
 
+    }
+
+    public function getUserById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $user  = User::find($id)->get();
+            return response()->json($user);
+        }else{
+            return response()->json('The token does not match');
+        }
     }
 
     public function login(Request $request)

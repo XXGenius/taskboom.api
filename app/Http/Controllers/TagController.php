@@ -50,6 +50,17 @@ class TagController extends Controller
 
     }
 
+    public function getTagById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $tag  = Tag::find($id)->get();
+            return response()->json($tag);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

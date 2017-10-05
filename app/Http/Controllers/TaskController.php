@@ -62,6 +62,17 @@ class TaskController extends Controller
         }
     }
 
+    public function getTaskById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $task  = Task::find($id)->get();
+            return response()->json($task);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function getMyTasks(Request $request)
     {
         $token = $request->input('token');

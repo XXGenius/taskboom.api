@@ -53,6 +53,17 @@ class TaskStatusController extends Controller
 
     }
 
+    public function getStatusById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $status  = TaskStatus::find($id)->get();
+            return response()->json($status);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

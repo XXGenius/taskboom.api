@@ -54,6 +54,17 @@ class ProjectController extends Controller
 
     }
 
+    public function getProjectById(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $project  = Project::find($id)->get();
+            return response()->json($project);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');
