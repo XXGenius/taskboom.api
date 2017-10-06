@@ -111,4 +111,6 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('login','AuthController@login');
 
+    $router->get('users','AuthController@index');
+
 });
