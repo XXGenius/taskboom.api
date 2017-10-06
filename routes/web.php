@@ -43,7 +43,7 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->put('lvl/{id}','ExpLvlController@updateLvl');
 
-    $router->delete('lvl/{id}','TaskGroupController@deleteLvl');
+    $router->delete('lvl/{id}','ExpLvlController@deleteLvl');
 
     $router->get('lvls','ExpLvlController@index');
 
