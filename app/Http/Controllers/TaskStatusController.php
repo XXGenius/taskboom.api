@@ -33,7 +33,7 @@ class TaskStatusController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $taskStatus  = TaskStatus::find($id);
-            $taskStatus->make = $request->input('make');
+            $taskStatus->title = $request->input('title');
             $taskStatus->save();
             return response()->json($taskStatus);
         }else{
