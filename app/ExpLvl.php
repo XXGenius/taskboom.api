@@ -14,6 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 class ExpLvl extends Model
 {
     protected $fillable = [
-        'exp','lvl'
+        'exp','level'
     ];
 }
