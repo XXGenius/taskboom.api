@@ -31,7 +31,7 @@ class UserRoleController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $userRole  = UserRole::find($id);
-            $userRole->make = $request->input('make');
+            $userRole->title = $request->input('title');
             $userRole->save();
             return response()->json($userRole);
         }else{

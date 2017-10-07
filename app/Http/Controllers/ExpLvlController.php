@@ -29,7 +29,8 @@ class ExpLvlController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $lvl  = ExpLvl::find($id);
-            $lvl->make = $request->input('make');
+            $lvl->exp = $request->input('exp');
+            $lvl->level = $request->input('level');
             $lvl->save();
             return response()->json($lvl);
         }else{

@@ -31,7 +31,7 @@ class UserGroupController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $userGroup  = UserGroup::find($id);
-            $userGroup->make = $request->input('make');
+            $userGroup->title = $request->input('title');
             $userGroup->save();
             return response()->json($userGroup);
         }else{

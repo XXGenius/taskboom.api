@@ -29,7 +29,7 @@ class TaskController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $task  = Task::find($id);
-            $task->make = $request->input('make');
+            $task->text = $request->input('text');
             $task->save();
             return response()->json($task);
         }else{

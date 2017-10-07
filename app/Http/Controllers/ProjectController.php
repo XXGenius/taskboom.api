@@ -31,7 +31,7 @@ class ProjectController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $project  = Project::find($id);
-            $project->make = $request->input('make');
+            $project->title = $request->input('title');
             $project->save();
             return response()->json($project);
         }else{

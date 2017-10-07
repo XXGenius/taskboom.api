@@ -31,7 +31,9 @@ class TaskGroupController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $taskGroup  = TaskGroup::find($id);
-            $taskGroup->make = $request->input('make');
+            $taskGroup->day = $request->input('day');
+            $taskGroup->month = $request->input('month');
+            $taskGroup->year = $request->input('year');
             $taskGroup->save();
             return response()->json($taskGroup);
         }else{

@@ -29,7 +29,7 @@ class TagController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $tag  = Tag::find($id);
-            $tag->make = $request->input('make');
+            $tag->title = $request->input('title');
             $tag->save();
             return response()->json($tag);
         }else{
