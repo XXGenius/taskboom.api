@@ -12,12 +12,11 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function findByDate(Request $request)
+    public function findByDate(Request $request, $date)
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $day = $request->input('date');
-            $tasks = Task::where('created_at','>=',$day + '00:00:00' + 'AND' + '<=' + $day + '23:59:59' )->get();
+            $tasks = Task::where('created_at','>=',$date + '00:00:00' + 'AND' + '<=' + $date + '23:59:59' )->get();
             return response()->json($tasks);
         }else{
             return response()->json('The token does not match');
