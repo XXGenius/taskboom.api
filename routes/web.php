@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
+    $router->get('day/{date}','TaskController@findByDate');
+
     $router->post('task','TaskController@createTask');
 
     $router->put('task/{id}','TaskController@updateTask');
