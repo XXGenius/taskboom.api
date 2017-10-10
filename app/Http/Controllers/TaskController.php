@@ -16,7 +16,7 @@ class TaskController extends Controller
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $tasks = Task::where('created_at','like',$date + '%'  )->get();
+            $tasks = Task::where('created_at','like','%' +$date + '%'  )->get();
             return response()->json($tasks);
         }else{
             return response()->json('The token does not match');
