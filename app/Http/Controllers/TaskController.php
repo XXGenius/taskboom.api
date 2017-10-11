@@ -17,11 +17,8 @@ class TaskController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $tasks = Task::where('date','=',$date  )->get();
-            if(count($tasks) == 0){
-                return response()->json('There are no tasks on this day.');
-            }else{
-                return response()->json($tasks);
-            }
+            return response()->json($tasks);
+
         }else{
             return response()->json('The token does not match');
         }
