@@ -50,6 +50,20 @@ class TaskController extends Controller
 
     }
 
+    public function checkTask(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $task  = Task::find($id);
+            $task->checked = $request->input('checked');
+            $task->save();
+            return response()->json($task);
+        }else{
+            return response()->json('The token does not match');
+        }
+
+    }
+
     public function deleteTask(Request $request, $id)
     {
         $token = $request->input('token');
