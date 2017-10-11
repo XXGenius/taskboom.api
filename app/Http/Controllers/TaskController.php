@@ -16,7 +16,7 @@ class TaskController extends Controller
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $tasks = Task::where('created_at','RLIKE',$date  )->get();
+            $tasks = Task::where('date','=',$date  )->get();
             return response()->json($tasks);
         }else{
             return response()->json('The token does not match');
@@ -33,7 +33,6 @@ class TaskController extends Controller
         }else{
             return response()->json('The token does not match');
         }
-
     }
 
     public function updateTask(Request $request, $id)
