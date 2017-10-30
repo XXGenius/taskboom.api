@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
 
-    public function loginAuth()
+    public function loginAuth(Request $request)
     {
-        $s = file_get_contents('http://ulogin.ru/token.php?token=' . $_POST['token'] . '&host=' . $_SERVER['HTTP_HOST']);
+        $s = file_get_contents('http://ulogin.ru/token.php?token=' . $request->input('token') . '&host=' . $_SERVER['HTTP_HOST']);
 //        $user = json_decode($s, true);
 
 //        $user['network'] - соц. сеть, через которую авторизовался пользователь
