@@ -30,7 +30,7 @@ class AuthController extends Controller
                 'photo' => $user['photo'],
                 'lvl' => 0,
                 'exp' => 0,
-                'user_role_id' => 2,
+                'user_role_id' => 7,
                 'identity' => $user['identity'],
                 'network' => $user['network'],
                 'profile' => $user['profile']
