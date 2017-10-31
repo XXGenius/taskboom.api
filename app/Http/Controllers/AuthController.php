@@ -38,7 +38,7 @@ class AuthController extends Controller
             $userdb->save();
             return response()->json($userdb);
         }
-        return response()->json($user);
+        return response()->json($userdb);
     }
 
     public function index(Request $request)
