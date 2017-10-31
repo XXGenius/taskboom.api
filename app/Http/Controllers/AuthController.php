@@ -19,26 +19,26 @@ class AuthController extends Controller
     {
         $s = file_get_contents('http://ulogin.ru/token.php?token=' . $request->input('token') . '&host=' . $_SERVER['HTTP_HOST']);
         $user = json_decode($s, true);
-        $email = $user['email'];
-        $userdb = User::where('email','=',$email)->get();
-        if(count($userdb) == 0){
-            $userdb = new User([
-                'email' => $user['email'],
-                'first_name' => $user['first_name'],
-                'last_name' => $user['last_name'],
-                'uid' => $user['uid'],
-                'photo' => $user['photo'],
-                'lvl' => 0,
-                'exp' => 0,
-                'user_role_id' => 1,
-                'identity' => $user['identity'],
-                'network' => $user['network'],
-                'profile' => $user['profile']
-            ]);
-            $userdb->save();
-            return response()->json($userdb);
-        }
-        return response()->json($userdb);
+//        $email = $user['email'];
+//        $userdb = User::where('email','=',$email)->get();
+//        if(count($userdb) == 0){
+//            $userdb = new User([
+//                'email' => $user['email'],
+//                'first_name' => $user['first_name'],
+//                'last_name' => $user['last_name'],
+//                'uid' => $user['uid'],
+//                'photo' => $user['photo'],
+//                'lvl' => 0,
+//                'exp' => 0,
+//                'user_role_id' => 1,
+//                'identity' => $user['identity'],
+//                'network' => $user['network'],
+//                'profile' => $user['profile']
+//            ]);
+//            $userdb->save();
+//            return response()->json($userdb);
+//        }
+        return response()->json($user);
     }
 
     public function index(Request $request)
