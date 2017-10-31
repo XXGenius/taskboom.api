@@ -21,7 +21,7 @@ class AuthController extends Controller
         $user = json_decode($s, true);
         $uid = $user['uid'];
         $userdb = User::where('uid','=',$uid)->get();
-        if(!$userdb){
+        if(count($userdb) == 0){
             $userdb = new User([
                 'email' => $user['email'],
                 'first_name' => $user['first_name'],
