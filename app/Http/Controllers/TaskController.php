@@ -18,7 +18,7 @@ class TaskController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
 //            $tasks = Task::where('date','=',$date  )->get();
-            $tasks = User::where([['date','=',$date],['user_id','=', $request->input('user_id')]])->get();
+            $tasks = Task::where([['date','=',$date],['user_id','=', $request->input('user_id')]])->get();
             return response()->json($tasks);
 
         }else{
