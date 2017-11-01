@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 use App\Task;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -16,7 +17,8 @@ class TaskController extends Controller
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $tasks = Task::where('date','=',$date  )->get();
+//            $tasks = Task::where('date','=',$date  )->get();
+            $tasks = User::where([['date','=',$date],['user_id','=', $request->input('user_id')]])->get();
             return response()->json($tasks);
 
         }else{
@@ -56,6 +58,7 @@ class TaskController extends Controller
         if($token == $this->token){
             $task  = Task::find($id);
             $task->checked = $request->input('checked');
+            $task->actual_time = date("Y-m-d H:i:s");
             $task->save();
             return response()->json($task);
         }else{
