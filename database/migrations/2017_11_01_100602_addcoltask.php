@@ -14,7 +14,7 @@ class Addcoltask extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->default(1);
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade')
