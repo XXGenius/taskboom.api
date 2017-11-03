@@ -121,4 +121,6 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('getcurrentuser','AuthController@getCurrentUser');
 
+    $router->put('updateexp','AuthController@updateExp');
+
 });

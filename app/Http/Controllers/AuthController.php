@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -28,7 +29,7 @@ class AuthController extends Controller
                 'last_name' => $user['last_name'],
                 'uid' => $user['uid'],
                 'photo' => $user['photo'],
-                'lvl' => 0,
+                'lvl' => 1,
                 'exp' => 0,
                 'user_role_id' => 7,
                 'identity' => $user['identity'],
@@ -102,13 +103,38 @@ class AuthController extends Controller
             if(!$password){
                 return response()->json('Enter the password!');
             }else{
-                $user = User::create($request->all());
+                $user = new User([
+                    'email' => $request->input('email'),
+                    'password' => $request->input('password'),
+                    'uid' => '"'. mt_rand() .'"',
+                    'lvl' => 1,
+                    'exp' => 0,
+                    'user_role_id' => 7,
+                ]);
+                $user->save();
                 return response()->json($user);
             }
         }else{
             return response()->json('The token does not match');
         }
 
+
+    }
+
+    public function updateExp (Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $id = $request->input('user_id');
+            $user  = User::find($id);
+            $exp = DB::table('users')->where('id', $id)->pluck('exp');
+            $newexp = $request->input('exp');
+            $user->exp = $exp + $newexp;
+            $user->save();
+            return response()->json($user);
+        }else{
+            return response()->json('The token does not match');
+        }
 
     }
 
