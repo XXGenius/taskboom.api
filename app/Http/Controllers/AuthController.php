@@ -129,7 +129,7 @@ class AuthController extends Controller
             $user  = User::find($id);
             $exp = DB::table('users')->where('id', $id)->pluck('exp');
             $newexp = $request->input('exp');
-            $user->exp = $exp + $newexp;
+            $user->exp = $request->input('exp');;
             $user->save();
             return response()->json($user);
         }else{
