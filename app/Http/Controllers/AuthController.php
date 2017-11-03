@@ -41,6 +41,13 @@ class AuthController extends Controller
         return response()->json($userdb);
     }
 
+    public function getCurrentUser(Request $request)
+    {
+        $uid = $request->input('uid');
+        $user = User::where('uid','=',$uid)->get();
+        return response()->json($user);
+    }
+
     public function index(Request $request)
     {
         $token = $request->input('token');

@@ -119,4 +119,6 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->post('oauth','AuthController@loginAuth');
 
+    $router->get('getcurrentuser','AuthController@getCurrentUser');
+
 });
