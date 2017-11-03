@@ -29,7 +29,7 @@ class AuthController extends Controller
                 'last_name' => $user['last_name'],
                 'uid' => $user['uid'],
                 'photo' => $user['photo'],
-                'lvl' => 1,
+                'level' => 1,
                 'exp' => 0,
                 'user_role_id' => 7,
                 'identity' => $user['identity'],
@@ -107,7 +107,7 @@ class AuthController extends Controller
                     'email' => $request->input('email'),
                     'password' => $request->input('password'),
                     'uid' => '"'. mt_rand() .'"',
-                    'lvl' => 1,
+                    'level' => 1,
                     'exp' => 0,
                     'user_role_id' => 7,
                 ]);
