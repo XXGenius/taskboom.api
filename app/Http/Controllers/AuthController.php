@@ -30,8 +30,8 @@ class AuthController extends Controller
                 'uid' => $user['uid'],
                 'photo' => $user['photo'],
                 'level' => 1,
-                'exp' => 10,
-                'user_role_id' => 7,
+                'exp' => 0,
+                'user_role_id' => 13,
                 'identity' => $user['identity'],
                 'network' => $user['network'],
                 'profile' => $user['profile']
@@ -109,9 +109,9 @@ class AuthController extends Controller
                     'first_name' => $request->input('first_name'),
                     'last_name' => $request->input('last_name'),
                     'uid' => '"'. mt_rand() .'"',
-                    'level' => 999,
-                    'exp' => 9999,
-                    'user_role_id' => 2,
+                    'level' => 1,
+                    'exp' => 0,
+                    'user_role_id' => 13,
                 ]);
                 $user->save();
                 return response()->json($user);
