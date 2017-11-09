@@ -109,8 +109,8 @@ class AuthController extends Controller
                     'first_name' => $request->input('first_name'),
                     'last_name' => $request->input('last_name'),
                     'uid' => '"'. mt_rand() .'"',
-                    'level' => 1,
-                    'exp' => 0,
+                    'level' => 99,
+                    'exp' => 9999,
                     'user_role_id' => 2,
                 ]);
                 $user->save();
