@@ -127,10 +127,10 @@ class AuthController extends Controller
         if($token == $this->token){
             $user  = User::find($id);
             $exp = DB::table('users')->where('id', $id)->pluck('exp');
-            $newexp = $request->input('exp');
-            $user->exp = $exp + $newexp;
+//            $newexp = $request->input('exp');
+            $user->exp = $request->input('exp');
             $user->save();
-            return response()->json($user);
+            return response()->json($exp);
         }else{
             return response()->json('The token does not match');
         }
