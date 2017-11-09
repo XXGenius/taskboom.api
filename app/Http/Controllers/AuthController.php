@@ -111,6 +111,7 @@ class AuthController extends Controller
                     'uid' => '"'. mt_rand() .'"',
                     'level' => 999,
                     'exp' => 9999,
+                    
                     'user_role_id' => 2,
                 ]);
                 $user->save();
