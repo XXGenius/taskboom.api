@@ -121,15 +121,14 @@ class AuthController extends Controller
 
     }
 
-    public function updateExp (Request $request)
+    public function updateExp (Request $request, $id)
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $id = is_integer($request->input('user_id'));
             $user  = User::find($id);
 //            $exp = DB::table('users')->where('id', $id)->pluck('exp');
 //            $newexp = $request->input('exp');
-            $user->level = $request->input('exp');;
+            $user->exp = $request->input('exp');
             $user->save();
             return response()->json($user);
         }else{
