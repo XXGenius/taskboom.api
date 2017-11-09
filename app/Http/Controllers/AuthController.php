@@ -126,7 +126,7 @@ class AuthController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $id = $request->input('user_id');
-            $user  = User::find($id);
+            $user  = User::find($id)->get();
 //            $exp = DB::table('users')->where('id', $id)->pluck('exp');
 //            $newexp = $request->input('exp');
             $user->exp = $request->all();;
