@@ -30,7 +30,7 @@ class AuthController extends Controller
                 'uid' => $user['uid'],
                 'photo' => $user['photo'],
                 'level' => 1,
-                'exp' => 0,
+                'exp' => 10,
                 'user_role_id' => 7,
                 'identity' => $user['identity'],
                 'network' => $user['network'],
@@ -108,7 +108,7 @@ class AuthController extends Controller
                     'password' => $request->input('password'),
                     'uid' => '"'. mt_rand() .'"',
                     'level' => 1,
-                    'exp' => 0,
+                    'exp' => 10,
                     'user_role_id' => 7,
                 ]);
                 $user->save();
@@ -129,7 +129,7 @@ class AuthController extends Controller
             $user  = User::find($id);
 //            $exp = DB::table('users')->where('id', $id)->pluck('exp');
 //            $newexp = $request->input('exp');
-            $user->exp = $request->input('exp');;
+            $user->level = $request->input('exp');;
             $user->save();
             return response()->json($user);
         }else{
