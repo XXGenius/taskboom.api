@@ -110,7 +110,7 @@ class AuthController extends Controller
                     'last_name' => $request->input('last_name'),
                     'uid' => '"'. mt_rand() .'"',
                     'level' => 1,
-                    
+
                     'exp' => 0,
                     'user_role_id' => 2,
                 ]);
