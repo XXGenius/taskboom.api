@@ -153,9 +153,6 @@ class AuthController extends Controller
             $email = $request->input('email');
             $password = $request->input('password');
             $user = User::where([['email','=',$email],['password','=', $password]])->get();
-            if(count($user) == 0) {
-                return response()->json('User not exist');
-            }
             return response()->json($user);
         }else{
             return response()->json('The token does not match');
