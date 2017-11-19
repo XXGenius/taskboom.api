@@ -101,7 +101,7 @@ class AuthController extends Controller
         if($token == $this->token){
             $password = $request->input('password');
             if(!$password){
-                return response()->json('Enter the password!');
+                return response()->json(\Error::class);
             }else{
                 $user = new User([
                     'email' => $request->input('email'),
