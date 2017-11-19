@@ -100,10 +100,7 @@ class AuthController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $password = $request->input('password');
-            if(!$password){
-                return response()->json(\Error::class);
-            }else{
-                $user = new User([
+            $user = new User([
                     'email' => $request->input('email'),
                     'password' => $request->input('password'),
                     'first_name' => $request->input('first_name'),
@@ -115,7 +112,6 @@ class AuthController extends Controller
                 ]);
                 $user->save();
                 return response()->json($user);
-            }
         }else{
             return response()->json('The token does not match');
         }
