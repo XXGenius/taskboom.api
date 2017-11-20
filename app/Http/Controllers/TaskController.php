@@ -102,12 +102,11 @@ class TaskController extends Controller
         }
     }
 
-    public function getMyTasks(Request $request)
+    public function getTasks(Request $request, $id)
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $day = $request->input('taskgroup_id');
-            $tasks = Task::where('group_task_id','=',$day)->get();
+            $tasks = Task::where('user_id','!=',$id)->get();
             return response()->json($tasks);
         }else{
             return response()->json('The token does not match');

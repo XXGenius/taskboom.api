@@ -31,7 +31,7 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('task/{id}','TaskController@getTaskById');
 
-    $router->get('mytasks', 'TaskController@getMyTasks');
+    $router->get('tasks/{id}', 'TaskController@getTasks');
 
     $router->post('day','TaskGroupController@createDay');
 
