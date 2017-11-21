@@ -23,6 +23,10 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->post('task','TaskController@createTask');
 
+    $router->post('childtask','TaskController@createChildTask');
+
+    $router->get('childtasks/{id}','TaskController@findByParent');
+
     $router->put('task/{id}','TaskController@updateTask');
 
     $router->delete('task/{id}','TaskController@deleteTask');
