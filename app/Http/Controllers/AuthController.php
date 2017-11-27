@@ -20,8 +20,8 @@ class AuthController extends Controller
     {
         $s = file_get_contents('http://ulogin.ru/token.php?token=' . $request->input('token') . '&host=' . $_SERVER['HTTP_HOST']);
         $user = json_decode($s, true);
-        $uid = $user['uid'];
-        $userdb = User::where('uid','=',$uid)->get();
+        $email = $user['email']; //ToDo исправвить вход !!!!
+        $userdb = User::where('email','=',$email)->get();
         if(count($userdb) == 0){
             $userdb = new User([
                 'email' => $user['email'],
