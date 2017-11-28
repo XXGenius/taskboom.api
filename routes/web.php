@@ -17,6 +17,10 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
+    $router->get('category','CategoryController@index');
+
+    $router->post('category','CategoryController@createCategory');
+
     $router->put('check/{id}','TaskController@checkTask');
 
     $router->get('day/date/{date}','TaskController@findByDate');
