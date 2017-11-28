@@ -12,7 +12,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 
-class CategoryController
+class CategoryController extends Controller
 {
     public function createCategory(Request $request){
         $token = $request->input('token');
