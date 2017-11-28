@@ -20,7 +20,7 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
     $router->get('category','CategoryController@index');
 
     $router->post('category','CategoryController@createCategory');
-    
+
 
     $router->put('check/{id}','TaskController@checkTask');
 
