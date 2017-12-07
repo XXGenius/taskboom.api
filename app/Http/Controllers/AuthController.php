@@ -51,7 +51,7 @@ class AuthController extends Controller
 
     public function index(Request $request)
     {
-        
+
         $token = $request->input('token');
         if ($token == $this->token) {
             $users = User::all();
