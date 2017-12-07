@@ -21,6 +21,7 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->post('category','CategoryController@createCategory');
 
+    $router->get('find','TaskController@findByWord');
 
     $router->put('check/{id}','TaskController@checkTask');
 

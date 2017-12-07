@@ -26,6 +26,19 @@ class TaskController extends Controller
         }
     }
 
+    public function findByWord(Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $str = $request->input('str');
+            $tasks = Task::where([['date','like',$str],['user_id','=', $request->input('user_id')]])->get();
+            return response()->json($tasks);
+
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
+
 
     public function findByParent(Request $request, $id)
     {
