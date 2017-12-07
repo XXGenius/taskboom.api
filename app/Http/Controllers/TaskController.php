@@ -48,7 +48,7 @@ class TaskController extends Controller
             $title = $request->input('title');
             if(!$title){
                 return response()->json('пусто!');
-            }else{
+            }else if($title){
                 $task = Task::create($request->all());
                 return response()->json($task);
             }
