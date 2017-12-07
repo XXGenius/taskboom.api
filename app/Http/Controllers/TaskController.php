@@ -45,8 +45,13 @@ class TaskController extends Controller
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $task = Task::create($request->all());
-            return response()->json($task);
+            $title = $request->input('title');
+            if(!$title){
+                return response()->json('пусто!');
+            }else{
+                $task = Task::create($request->all());
+                return response()->json($task);
+            }
         }else{
             return response()->json('The token does not match');
         }
