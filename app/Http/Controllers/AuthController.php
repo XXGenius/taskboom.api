@@ -29,9 +29,6 @@ class AuthController extends Controller
                 'last_name' => $user['last_name'],
                 'uid' => $user['uid'],
                 'photo' => $user['photo'],
-                'level' => 1,
-                'exp' => 0,
-                'user_role_id' => 13,
                 'identity' => $user['identity'],
                 'network' => $user['network'],
                 'profile' => $user['profile']
