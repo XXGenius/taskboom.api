@@ -13,7 +13,7 @@ class Cycles extends Migration
      */
     public function up()
     {
-        Schema::create('steps', function (Blueprint $table) {
+        Schema::create('cycles', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date_start');
             $table->date('date_end');
@@ -22,9 +22,9 @@ class Cycles extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer('cycle_id')->unsigned()->defautl(0);
-            $table->foreign('cycle_id')
-                ->references('id')->on('cycles')
+            $table->integer('length_cycle_id')->unsigned()->defautl(0);
+            $table->foreign('length_cycle_id')
+                ->references('id')->on('length_cycles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();
