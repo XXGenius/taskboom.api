@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PrioritetsTasks extends Migration
+class LengthCycles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class PrioritetsTasks extends Migration
      */
     public function up()
     {
-        Schema::create('prioritets', function (Blueprint $table) {
+        Schema::create('length_cycles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         //

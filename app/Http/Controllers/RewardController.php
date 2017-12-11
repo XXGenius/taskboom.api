@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: genius
- * Date: 28.11.17
- * Time: 15:33
+ * Date: 11.12.17
+ * Time: 22:19
  */
 
 namespace App\Http\Controllers;
 
 
-class TimeController
+class RewardController
 {
 
 }

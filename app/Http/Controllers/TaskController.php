@@ -26,32 +26,10 @@ class TaskController extends Controller
         }
     }
 
-    public function findByWord(Request $request)
-    {
-        $token = $request->input('token');
-        if($token == $this->token){
-            $str = $request->input('str');
-            $tasks = Task::where([['title','like','%'.$str.'%'],['user_id','=', $request->input('user_id')]])->get();
-            return response()->json($tasks);
-
-        }else{
-            return response()->json('The token does not match');
-        }
-    }
 
 
-    public function findByParent(Request $request, $id)
-    {
-        $token = $request->input('token');
-        if($token == $this->token){
-//            $tasks = Task::where('date','=',$date  )->get();
-            $tasks = Task::where('parent_id','!=',$id)->get();
-            return response()->json($tasks);
 
-        }else{
-            return response()->json('The token does not match');
-        }
-    }
+
 
 
     public function createTask(Request $request)
@@ -72,16 +50,7 @@ class TaskController extends Controller
 
 
 
-    public function createChildTask(Request $request)
-    {
-        $token = $request->input('token');
-        if($token == $this->token){
-            $task = Task::create($request->all());
-            return response()->json($task);
-        }else{
-            return response()->json('The token does not match');
-        }
-    }
+
 
     public function updateTask(Request $request, $id)
     {

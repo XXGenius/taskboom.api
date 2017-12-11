@@ -16,12 +16,15 @@ class Users extends Migration
             $table->string('password');
             $table->integer('exp');
             $table->integer('level');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('uid');
+            $table->index('uid');
+            $table->string('photo');
+            $table->string('identity');
+            $table->string('network');
+            $table->string('profile');
             $table->timestamps();
-            $table->integer('user_role_id')->unsigned()->default(1);
-            $table->foreign('user_role_id')
-                ->references('id')->on('user_roles')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 
