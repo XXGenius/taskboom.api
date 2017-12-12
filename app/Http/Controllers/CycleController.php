@@ -21,7 +21,7 @@ class CycleController extends Controller
             $cycle = new Cycle([
                 'user_id' => '1',
                 'date_start' => date('m-d-Y'),
-                'date_end' =>  mktime(0, 0, 0, date("m")+1, date("d"),   date("Y")),
+                'date_end' => date('m-d-Y', mktime(0, 0, 0, date('m') + 1, date('d') , date('Y'))),
                 'length_cycle_id' => 2
             ]);
             $cycle->save();
