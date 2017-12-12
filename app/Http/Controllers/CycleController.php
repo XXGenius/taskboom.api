@@ -19,9 +19,10 @@ class CycleController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $cycle = new Cycle([
-                'user_id' => $request->input('user_id'),
+                'user_id' => 1,
                 'date_start' => date('mm-dd-yyyy', 1),
-                'date_end' => date('mm-dd-yyyy', +1)
+                'date_end' => date('mm-dd-yyyy', +1),
+                'length_cycle_id' => 2
             ]);
             $cycle->save();
             return response()->json($cycle);
