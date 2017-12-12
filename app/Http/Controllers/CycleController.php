@@ -20,8 +20,8 @@ class CycleController extends Controller
         if($token == $this->token){
             $cycle = new Cycle([
                 'user_id' => $request->input('user_id'),
-                'date_start' => date('m-d-Y'),
-                'date_end' => date('m-d-Y', mktime(0, 0, 0, date('m') + 3, date('d') , date('Y'))),
+                'date_start' => date('Y-d-m'),
+                'date_end' => date('Y-d-m', mktime(0, 0, 0, date('m') + 3, date('d') , date('Y'))),
                 'length_cycle_id' => 2
             ]);
             $cycle->save();
