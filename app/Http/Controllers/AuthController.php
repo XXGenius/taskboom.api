@@ -104,9 +104,7 @@ class AuthController extends Controller
                     'first_name' => $request->input('first_name'),
                     'last_name' => $request->input('last_name'),
                     'uid' => '"'. mt_rand() .'"',
-                    'level' => 1,
-                    'exp' => 0,
-                    'user_role_id' => 13,
+
                 ]);
                 $user->save();
                 return response()->json($user);
@@ -117,21 +115,6 @@ class AuthController extends Controller
 
     }
 
-    public function updateExp (Request $request, $id)
-    {
-        $token = $request->input('token');
-        if($token == $this->token){
-            $user  = User::find($id);
-            $exp = DB::table('users')->where('id', $id)->pluck('exp');
-            $newexp = $request->input('exp');
-            $user->exp = $exp['0'] + $newexp;
-            $user->save();
-            return response()->json($user);
-        }else{
-            return response()->json('The token does not match');
-        }
-
-    }
 
     public function getUserById(Request $request, $id)
     {

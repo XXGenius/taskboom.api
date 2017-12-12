@@ -17,6 +17,10 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
+    $router->post('createcycle','CycleController@createLongCycle');
+
+    $router->post('createlength','LengthCycleController@createLengthCycle');
+
     $router->put('check/{id}','TaskController@checkTask');
 
     $router->post('task','TaskController@createTask');
