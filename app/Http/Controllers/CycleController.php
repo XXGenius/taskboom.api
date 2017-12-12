@@ -31,4 +31,11 @@ class CycleController extends Controller
         }
     }
 
+    public function getLong(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $cycle = Cycle::where('user_id','=',$user_id)->get();
+        return response()->json($cycle);
+    }
+
 }
