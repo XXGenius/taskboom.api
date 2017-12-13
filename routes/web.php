@@ -25,7 +25,9 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('long','CycleController@getLong');
 
-    $router->get('steps','StepController@index');
+    $router->get('allsteps','StepController@index');
+
+    $router->get('steps','StepController@getMySteps');
 
     $router->put('check/{id}','TaskController@checkTask');
 
