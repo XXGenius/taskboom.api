@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Cycle;
+use App\Step;
 use Illuminate\Http\Request;
 
 class CycleController extends Controller
@@ -25,6 +26,14 @@ class CycleController extends Controller
                 'length_cycle_id' => 2
             ]);
             $cycle->save();
+            $cycle_id = $cycle->id;
+            for ($i = 0; $i < 10; $i++ ) {
+                $step = new Step([
+                    'user_id' => $request->input('user_id'),
+                    'text' => 'test',
+                    'cycle_id' => $cycle_id
+                ]);
+            }
             return response()->json($cycle);
         }else{
             return response()->json('The token does not match');
