@@ -33,6 +33,7 @@ class CycleController extends Controller
                     'text' => 'test',
                     'cycle_id' => $cycle_id
                 ]);
+                $step->save();
             }
             return response()->json($cycle);
         }else{
