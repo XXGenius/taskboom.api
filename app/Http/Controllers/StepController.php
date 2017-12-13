@@ -9,7 +9,20 @@
 namespace App\Http\Controllers;
 
 
+use App\Step;
+use Illuminate\Http\Request;
+
 class StepController extends Controller
 {
+    public function index(Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $steps  = Step::all();
+            return response()->json($steps);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
 
 }

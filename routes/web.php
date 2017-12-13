@@ -23,6 +23,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('long','CycleController@getLong');
 
+    $router->get('steps','StepController@index');
+
     $router->put('check/{id}','TaskController@checkTask');
 
     $router->post('task','TaskController@createTask');
