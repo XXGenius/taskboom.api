@@ -48,4 +48,17 @@ class CycleController extends Controller
         return response()->json($cycle);
     }
 
+    public function deleteCycle(Request $request, $id)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $task  = Cycle::find($id);
+            $task->delete();
+            return response()->json('Removed successfully.');
+        }else{
+            return response()->json('The token does not match');
+        }
+
+    }
+
 }
