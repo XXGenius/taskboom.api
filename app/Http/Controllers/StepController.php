@@ -31,7 +31,7 @@ class StepController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $cycle_id = 27;
-            $steps  = Step::where('cycle_id','=',$cycle_id);
+            $steps  = Step::where('cycle_id','=','26');
             return response()->json($steps);
         }else{
             return response()->json('The token does not match');
