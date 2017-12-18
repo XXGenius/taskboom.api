@@ -33,7 +33,8 @@ class CycleController extends Controller
                     'text' => 'testtest',
                     'cycle_id' => $cycle_id,
                     'number' => $i + 1,
-                    'day_id' => 0
+                    'day_id' => 0,
+                    'priority_id' => 1,
                 ]);
                 $task->save();
                 $task_id [] = $task->id;
