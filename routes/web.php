@@ -29,6 +29,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('steps','StepController@getMySteps');
 
+    $router->put('step/{id}','StepController@update');
+
     $router->post('priority','PriorityController@create');
 
     $router->post('day','DayController@create');

@@ -37,4 +37,12 @@ class StepController extends Controller
             return response()->json('The token does not match');
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        $step  = Step::find($id);
+        $step->text = $request->input('text');
+        $step->save();
+        return response()->json($step);
+    }
 }
