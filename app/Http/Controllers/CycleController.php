@@ -40,7 +40,7 @@ class CycleController extends Controller
                 $task->save();
             }
             $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
-            $task_id = $task['id'];
+            $task_id = $task['0']['id'];
             for ($i = 0; $i < 10; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
