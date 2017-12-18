@@ -41,7 +41,7 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('task/{id}','TaskController@getTaskById');
 
-    $router->get('tasks/{id}', 'TaskController@getTasks');
+    $router->get('mytasks', 'TaskController@getTasks');
 
     $router->post('user','AuthController@createUser');
 
