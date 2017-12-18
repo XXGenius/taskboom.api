@@ -44,7 +44,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id['0']
+                    'task_id' => $task_id[0]
                 ]);
                 $step->save();
             }
@@ -53,7 +53,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id['1']
+                    'task_id' => $task_id[1]
                 ]);
                 $step->save();
             }
@@ -62,7 +62,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id['2']
+                    'task_id' => $task_id[2]
                 ]);
                 $step->save();
             }
