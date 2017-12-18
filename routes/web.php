@@ -31,6 +31,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->post('priority','PriorityController@create');
 
+    $router->post('day','DayController@create');
+
     $router->put('check/{id}','TaskController@checkTask');
 
     $router->post('task','TaskController@createTask');
