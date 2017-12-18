@@ -28,51 +28,62 @@ class CycleController extends Controller
             ]);
             $cycle->save();
             $cycle_id = $cycle->id;
-
-            for ($i = 0; $i < 3; $i++ ) {
-                $task = new Task([
-                    'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
-                    'cycle_id' => $cycle_id,
-                    'number' => $i + 1,
-                    'day_id' => 1,
-                    'priority_id' => 1,
-                ]);
-                $task->save();
-            }
+            $this->createtask($cycle_id);
             $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
             $task_id = $task['0']->id;
-            for ($i = 0; $i < 10; $i++ ) {
-                $step = new Step([
-                    'user_id' => $request->input('user_id'),
-                    'text' => 'Введите описание шага и нажмите Enter',
-                    'cycle_id' => $cycle_id,
-                    'task_id' => $task_id
-                ]);
-                $step->save();
-            }
-            for ($i = 0; $i < 4; $i++ ) {
-                $step = new Step([
-                    'user_id' => $request->input('user_id'),
-                    'text' => 'Введите описание шага и нажмите Enter',
-                    'cycle_id' => $cycle_id,
-                    'task_id' => $task_id + 1
-                ]);
-                $step->save();
-            }
-            for ($i = 0; $i < 4; $i++ ) {
-                $step = new Step([
-                    'user_id' => $request->input('user_id'),
-                    'text' => 'Введите описание шага и нажмите Enter',
-                    'cycle_id' => $cycle_id,
-                    'task_id' => $task_id + 2
-                ]);
-                $step->save();
-            }
+            $this->createSteps($cycle_id, $task_id, $request->input('user_id'));
             return response()->json($cycle);
         }else{
             return response()->json('The token does not match');
         }
     }
+
+  public function createtask($cycle_id)
+  {
+      for ($i = 0; $i < 3; $i++ ) {
+          $task = new Task([
+              'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
+              'cycle_id' => $cycle_id,
+              'number' => $i + 1,
+              'day_id' => 1,
+              'priority_id' => 1,
+          ]);
+          $task->save();
+      }
+
+  }
+
+  public function createSteps($cycle_id, $task_id, $user_id)
+  {
+      for ($i = 0; $i < 10; $i++ ) {
+      $step = new Step([
+          'user_id' => $user_id,
+          'text' => 'Введите описание шага и нажмите Enter',
+          'cycle_id' => $cycle_id,
+          'task_id' => $task_id
+      ]);
+      $step->save();
+  }
+      for ($i = 0; $i < 4; $i++ ) {
+          $step = new Step([
+              'user_id' => $user_id,
+              'text' => 'Введите описание шага и нажмите Enter',
+              'cycle_id' => $cycle_id,
+              'task_id' => $task_id + 1
+          ]);
+          $step->save();
+      }
+      for ($i = 0; $i < 4; $i++ ) {
+          $step = new Step([
+              'user_id' => $user_id,
+              'text' => 'Введите описание шага и нажмите Enter',
+              'cycle_id' => $cycle_id,
+              'task_id' => $task_id + 2
+          ]);
+          $step->save();
+      }
+
+  }
 
     public function getLong(Request $request)
     {
