@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Cycle;
 use App\Step;
+use App\Task;
 use Illuminate\Http\Request;
 
 class CycleController extends Controller
@@ -27,11 +28,39 @@ class CycleController extends Controller
             ]);
             $cycle->save();
             $cycle_id = $cycle->id;
+            for ($i = 0; $i < 4; $i++ ) {
+                $task = new Task([
+                    'text' => 'testtest',
+                    'cycle_id' => $cycle_id,
+                    'number' => $i + 1
+                ]);
+                $task->save();
+                $task_id [] = $task->id;
+            }
             for ($i = 0; $i < 10; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
-                    'cycle_id' => $cycle_id
+                    'cycle_id' => $cycle_id,
+                    'task_id' => $task_id['0']
+                ]);
+                $step->save();
+            }
+            for ($i = 0; $i < 4; $i++ ) {
+                $step = new Step([
+                    'user_id' => $request->input('user_id'),
+                    'text' => 'test',
+                    'cycle_id' => $cycle_id,
+                    'task_id' => $task_id['1']
+                ]);
+                $step->save();
+            }
+            for ($i = 0; $i < 4; $i++ ) {
+                $step = new Step([
+                    'user_id' => $request->input('user_id'),
+                    'text' => 'test',
+                    'cycle_id' => $cycle_id,
+                    'task_id' => $task_id['2']
                 ]);
                 $step->save();
             }
