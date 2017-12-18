@@ -106,15 +106,10 @@ class TaskController extends Controller
         }
     }
 
-    public function getTaskById(Request $request, $id)
+    public function getTaskById($cycle_id, $number)
     {
-        $token = $request->input('token');
-        if($token == $this->token){
-            $task  = Task::find($id)->get();
-            return response()->json($task);
-        }else{
-            return response()->json('The token does not match');
-        }
+        $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', $number]])->get();
+        return $task;
     }
 
     public function getTasks(Request $request)

@@ -38,9 +38,9 @@ class CycleController extends Controller
                     'priority_id' => 1,
                 ]);
                 $task->save();
-                $task_id = $task->id;
-
             }
+            $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', '1']])->get();
+            $task_id = $task->id;
             for ($i = 0; $i < 10; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
@@ -55,7 +55,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id
+                    'task_id' => $task_id + 1
                 ]);
                 $step->save();
             }
@@ -64,7 +64,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id
+                    'task_id' => $task_id + 2
                 ]);
                 $step->save();
             }
