@@ -122,7 +122,7 @@ class TaskController extends Controller
         $token = $request->input('token');
         if($token == $this->token){
             $id = $request->input('cycle_id');
-            $tasks = Task::where('cycle_id','!=',$id)->get();
+            $tasks = Task::where('cycle_id','=',$id)->get();
             return response()->json($tasks);
         }else{
             return response()->json('The token does not match');
