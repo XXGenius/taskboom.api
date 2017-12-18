@@ -29,7 +29,7 @@ class CycleController extends Controller
             $cycle->save();
             $cycle_id = $cycle->id;
 
-            for ($i = 0; $i < 4; $i++ ) {
+            for ($i = 0; $i < 3; $i++ ) {
                 $task = new Task([
                     'text' => 'testtest'.$i,
                     'cycle_id' => $cycle_id,
