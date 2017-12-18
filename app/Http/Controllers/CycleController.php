@@ -31,7 +31,7 @@ class CycleController extends Controller
 
             for ($i = 0; $i < 3; $i++ ) {
                 $task = new Task([
-                    'text' => 'testtest'.$i,
+                    'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
                     'cycle_id' => $cycle_id,
                     'number' => $i + 1,
                     'day_id' => 1,
