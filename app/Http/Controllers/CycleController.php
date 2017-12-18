@@ -44,7 +44,7 @@ class CycleController extends Controller
             for ($i = 0; $i < 10; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
-                    'text' => 'test',
+                    'text' => 'Введите описание шага и нажмите Enter',
                     'cycle_id' => $cycle_id,
                     'task_id' => $task_id
                 ]);
@@ -53,7 +53,7 @@ class CycleController extends Controller
             for ($i = 0; $i < 4; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
-                    'text' => 'test',
+                    'text' => 'Введите описание шага и нажмите Enter',
                     'cycle_id' => $cycle_id,
                     'task_id' => $task_id + 1
                 ]);
@@ -62,7 +62,7 @@ class CycleController extends Controller
             for ($i = 0; $i < 4; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
-                    'text' => 'test',
+                    'text' => 'Введите описание шага и нажмите Enter',
                     'cycle_id' => $cycle_id,
                     'task_id' => $task_id + 2
                 ]);
