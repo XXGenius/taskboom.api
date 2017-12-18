@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Prioritet;
+use App\Priority;
 use Illuminate\Http\Request;
 
 class PriorityController extends Controller
@@ -22,8 +22,8 @@ class PriorityController extends Controller
             if(!$title){
                 return response()->json('пусто!');
             }else if($title){
-                $task = Prioritet::create($request->all());
-                return response()->json($task);
+                $priority = Priority::create($request->all());
+                return response()->json($priority);
             }
         }else{
             return response()->json('The token does not match');

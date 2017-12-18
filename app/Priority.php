@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: genius
- * Date: 28.11.17
- * Time: 15:32
+ * Date: 18.12.17
+ * Time: 14:10
  */
 
 namespace App;
@@ -11,9 +11,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prioritet extends Model
+class Priority extends Model
 {
     protected $fillable = [
         'title'
     ];
+
 }
