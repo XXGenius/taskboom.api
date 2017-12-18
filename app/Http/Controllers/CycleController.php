@@ -28,23 +28,25 @@ class CycleController extends Controller
             ]);
             $cycle->save();
             $cycle_id = $cycle->id;
+            $tasks = array();
             for ($i = 0; $i < 4; $i++ ) {
                 $task = new Task([
-                    'text' => 'testtest',
+                    'text' => 'testtest'.$i,
                     'cycle_id' => $cycle_id,
                     'number' => $i + 1,
                     'day_id' => 1,
                     'priority_id' => 1,
                 ]);
                 $task->save();
-                $task_id [] = $task->id;
+                array_push($tasks, $task->id);
+
             }
             for ($i = 0; $i < 10; $i++ ) {
                 $step = new Step([
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id[0]
+                    'task_id' => $tasks['0']
                 ]);
                 $step->save();
             }
@@ -53,7 +55,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id[1]
+                    'task_id' => $tasks['1']
                 ]);
                 $step->save();
             }
@@ -62,7 +64,7 @@ class CycleController extends Controller
                     'user_id' => $request->input('user_id'),
                     'text' => 'test',
                     'cycle_id' => $cycle_id,
-                    'task_id' => $task_id[2]
+                    'task_id' => $tasks['2']
                 ]);
                 $step->save();
             }
