@@ -32,7 +32,8 @@ class CycleController extends Controller
                 $task = new Task([
                     'text' => 'testtest',
                     'cycle_id' => $cycle_id,
-                    'number' => $i + 1
+                    'number' => $i + 1,
+                    'day_id' => 0
                 ]);
                 $task->save();
                 $task_id [] = $task->id;
