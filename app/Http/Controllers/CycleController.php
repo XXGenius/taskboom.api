@@ -126,13 +126,13 @@ class CycleController extends Controller
         $id = $request->input('id');
         $cycle = Cycle::find($id)->get();
         $date = $cycle['0']->date_start;
-        $date = \DateTime::createFromFormat("Y-d-m H:i", $date.' 23:59'); // задаем дату в любом формате
-        $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
-        $interval->y; // кол-во лет
-        $i = $interval->d; // кол-во дней
-        $interval->i; // кол-во минут
-        $sDate1 = '2017-12-20';
-        $sDate2 = $date;
+//        $date = \DateTime::createFromFormat("Y-d-m H:i", $date.' 23:59'); // задаем дату в любом формате
+//        $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
+//        $interval->y; // кол-во лет
+//        $i = $interval->d; // кол-во дней
+//        $interval->i; // кол-во минут
+//        $sDate1 = '2017-12-20';
+//        $sDate2 = $date;
 //        $t =  (strtotime($sDate1) - strtotime($sDate2))/3600/24;
         return response()->json($date);
     }
