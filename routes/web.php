@@ -21,6 +21,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->delete('cycle/{id}','CycleController@deleteCycle');
 
+    $router->get('date','CycleController@getDate');
+
     $router->post('createlength','LengthCycleController@createLengthCycle');
 
     $router->get('long','CycleController@getLong');

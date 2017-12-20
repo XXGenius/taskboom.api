@@ -119,6 +119,19 @@ class CycleController extends Controller
 
     }
 
+    public function getDate(Request $request) {
+        $now = new \DateTime();
+        $id = $request->input('id');
+        $cycle = Cycle::find($id)->get();
+        $date = $cycle->date_start;
+        $date = \DateTime::createFromFormat("Y-m-d H:i", $date.' 23:59'); // задаем дату в любом формате
+        $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
+        $interval->y; // кол-во лет
+        $i = $interval->d; // кол-во дней
+        $interval->i; // кол-во минут
+        return response()->json($i);
+    }
+
     public function getLong(Request $request)
     {
         $user_id = $request->input('user_id');
