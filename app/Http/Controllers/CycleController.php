@@ -89,7 +89,7 @@ class CycleController extends Controller
 
     public function createRewards($cycle_id, $task_id, $user_id)
     {
-        for ($i = 0; $i < 2; $i++ ) {
+        for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
                 'text' => 'Введите описание награды и нажмите Enter',
@@ -98,7 +98,7 @@ class CycleController extends Controller
             ]);
             $step->save();
         }
-        for ($i = 0; $i < 2; $i++ ) {
+        for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
                 'text' => 'Введите описание шага и нажмите Enter',
@@ -107,7 +107,7 @@ class CycleController extends Controller
             ]);
             $step->save();
         }
-        for ($i = 0; $i < 2; $i++ ) {
+        for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
                 'text' => 'Введите описание шага и нажмите Enter',
