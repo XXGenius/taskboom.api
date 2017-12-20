@@ -26,7 +26,7 @@ class CycleController extends Controller
             $cycle = new Cycle([
                 'user_id' => $request->input('user_id'),
                 'date_start' => $date,
-                'date_end' => $date->add(new \DateInterval('P3M')),
+                'date_end' => $datetime->add(new \DateInterval('P3M')),
                 'length_cycle_id' => 2
             ]);
             $cycle->save();
