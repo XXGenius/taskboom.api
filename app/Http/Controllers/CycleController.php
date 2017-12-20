@@ -23,7 +23,7 @@ class CycleController extends Controller
         if($token == $this->token){
             $cycle = new Cycle([
                 'user_id' => $request->input('user_id'),
-                'date_start' => new \DateTime('Y-d-m'),
+                'date_start' => new \DateTime(),
                 'date_end' => new \DateTime('Y-d-m', mktime(0, 0, 0, date('m') + 3, date('d') , date('Y'))),
                 'length_cycle_id' => 2
             ]);
