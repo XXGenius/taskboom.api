@@ -135,7 +135,7 @@ class CycleController extends Controller
         $datetime1 = new \DateTime();
         $datetime2 = new \DateTime('2017-12-20');
         $interval = $datetime1->diff($datetime2);
-        $i = $interval->format('%R%');
+        $i = $interval->d;
         return response()->json($i);
     }
 
