@@ -120,7 +120,7 @@ class CycleController extends Controller
     }
 
     public function getDate(Request $request) {
-        $now = new \DateTime();
+        $now = date('Y-d-m H:i');
         $id = $request->input('id');
         $cycle = Cycle::find($id)->get();
         $date = $cycle['0']->date_start;
