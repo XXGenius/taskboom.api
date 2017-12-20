@@ -129,7 +129,7 @@ class CycleController extends Controller
         $interval->y; // кол-во лет
         $i = $interval->d; // кол-во дней
         $interval->i; // кол-во минут
-        $sDate1 = date('Y-m-d');
+        $sDate1 = '2017-12-20';
         $sDate2 = $date;
         $t =  (strtotime($sDate1) - strtotime($sDate2))/3600/24;
         return response()->json($t);
