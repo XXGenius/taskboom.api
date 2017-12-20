@@ -20,11 +20,13 @@ class CycleController extends Controller
     public function createLongCycle(Request $request)
     {
         $token = $request->input('token');
+        $datetime  = new \DateTime();
+        $date = $datetime->format('Y-m-d');
         if($token == $this->token){
             $cycle = new Cycle([
                 'user_id' => $request->input('user_id'),
-                'date_start' => new \DateTime(),
-                'date_end' => new \DateTime(mktime(0, 0, 0, date('m') + 3, date('d') , date('Y'))),
+                'date_start' => $date,
+                'date_end' => $date->add(new \DateInterval('P3M')),
                 'length_cycle_id' => 2
             ]);
             $cycle->save();
