@@ -133,9 +133,9 @@ class CycleController extends Controller
 //        $i = $interval->d; // кол-во дней
 //        $interval->i; // кол-во минут
         $datetime1 = new \DateTime();
-        $datetime2 = new \DateTime($date);
+        $datetime2 = new \DateTime('2017-12-20');
         $interval = $datetime1->diff($datetime2);
-        $i = $interval->format('%R%a дней');
+        $i = $interval->format('%R%');
         return response()->json($i);
     }
 
