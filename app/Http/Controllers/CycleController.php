@@ -132,7 +132,7 @@ class CycleController extends Controller
         $sDate1 = '2017-12-20';
         $sDate2 = $date;
         $t =  (strtotime($sDate1) - strtotime($sDate2))/3600/24;
-        return response()->json($t);
+        return response()->json($date);
     }
 
     public function getLong(Request $request)
