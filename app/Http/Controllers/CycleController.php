@@ -150,7 +150,7 @@ class CycleController extends Controller
     {
         $token = $request->input('token');
         if($token == $this->token){
-            $task  = Cycle::find($id);
+            $task  = Cycle::where('user_id','=', $id);
             $task->delete();
             return response()->json('Removed successfully.');
         }else{
