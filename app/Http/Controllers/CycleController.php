@@ -136,7 +136,7 @@ class CycleController extends Controller
         $datetime2 = new \DateTime('2017-12-20');
         $interval = $datetime1->diff($datetime2);
         $i = $interval->d;
-        return response()->json($i);
+        return response()->json($date);
     }
 
     public function getLong(Request $request)
