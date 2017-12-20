@@ -122,16 +122,17 @@ class CycleController extends Controller
     }
 
     public function getDate(Request $request) {
-        $now = new \DateTime();
+        $datetime = new \DateTime();
+        $now =  $datetime->format('Y-m-d');
         $id = $request->input('id');
         $cycle = Cycle::find($id)->get();
         $date = $cycle['0']->date_start;
-        $datetime = \DateTime::createFromFormat("Y-m-d", $date); // задаем дату в любом формате
-        $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
+//        $datetime = \DateTime::createFromFormat("Y-m-d", $date); // задаем дату в любом формате
+        $interval = $datetime->diff($date); // получаем разницу в виде объекта DateInterval
         $interval->y; // кол-во лет
         $i = $interval->d; // кол-во дней
         $interval->i; // кол-во минут
-        return response()->json($datetime);
+        return response()->json($i);
     }
 
     public function getLong(Request $request)
