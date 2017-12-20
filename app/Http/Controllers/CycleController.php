@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Cycle;
+use App\Reward;
 use App\Step;
 use App\Task;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class CycleController extends Controller
             $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
             $task_id = $task['0']->id;
             $this->createSteps($cycle_id, $task_id, $request->input('user_id'));
+            $this->createRewards($cycle_id, $task_id, $request->input('user_id'));
             return response()->json($cycle);
         }else{
             return response()->json('The token does not match');
@@ -84,6 +86,38 @@ class CycleController extends Controller
       }
 
   }
+
+    public function createRewards($cycle_id, $task_id, $user_id)
+    {
+        for ($i = 0; $i < 2; $i++ ) {
+            $step = new Reward([
+                'user_id' => $user_id,
+                'text' => 'Введите описание награды и нажмите Enter',
+                'cycle_id' => $cycle_id,
+                'task_id' => $task_id
+            ]);
+            $step->save();
+        }
+        for ($i = 0; $i < 2; $i++ ) {
+            $step = new Reward([
+                'user_id' => $user_id,
+                'text' => 'Введите описание шага и нажмите Enter',
+                'cycle_id' => $cycle_id,
+                'task_id' => $task_id + 1
+            ]);
+            $step->save();
+        }
+        for ($i = 0; $i < 2; $i++ ) {
+            $step = new Reward([
+                'user_id' => $user_id,
+                'text' => 'Введите описание шага и нажмите Enter',
+                'cycle_id' => $cycle_id,
+                'task_id' => $task_id + 2
+            ]);
+            $step->save();
+        }
+
+    }
 
     public function getLong(Request $request)
     {

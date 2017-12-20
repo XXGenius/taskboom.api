@@ -31,6 +31,10 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->put('step/{id}','StepController@update');
 
+    $router->get('rewards','RewardController@getMyRewards');
+
+    $router->put('reward/{id}','RewardController@update');
+
     $router->post('priority','PriorityController@create');
 
     $router->post('day','DayController@create');
