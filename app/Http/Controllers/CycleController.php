@@ -101,7 +101,7 @@ class CycleController extends Controller
         for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
-                'text' => 'Введите описание шага и нажмите Enter',
+                'text' => 'Введите описание награды и нажмите Enter',
                 'cycle_id' => $cycle_id,
                 'task_id' => $task_id + 1
             ]);
@@ -110,7 +110,7 @@ class CycleController extends Controller
         for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
-                'text' => 'Введите описание шага и нажмите Enter',
+                'text' => 'Введите описание награды и нажмите Enter',
                 'cycle_id' => $cycle_id,
                 'task_id' => $task_id + 2
             ]);
