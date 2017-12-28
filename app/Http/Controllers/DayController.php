@@ -35,7 +35,7 @@ class DayController extends Controller
         $user_id = $request->input('user_id');
         $date = $request->input('date');
         $day  = Day::where([['date','=',$date],['user_id','=', $user_id]])->get();
-        return $day;
+        return response()->json($day);
 
     }
 
