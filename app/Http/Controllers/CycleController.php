@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Cycle;
+use App\Day;
 use App\Reward;
 use App\Step;
 use App\Task;
@@ -55,6 +56,11 @@ class CycleController extends Controller
             'length_cycle_id' => 3,
         ]);
         $cycle->save();
+        $day = new Day([
+            'user_id' => $request->input('user_id'),
+            'date' => $date,
+        ]);
+        $day->save();
         $cycle_id = $cycle->id;
         $this->createWeektask($cycle_id);
         $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
