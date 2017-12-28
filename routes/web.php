@@ -19,6 +19,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
     $router->post('createcycle','CycleController@createLongCycle');
 
+    $router->post('createweek','CycleController@createWeek');
+
     $router->delete('cycle/{id}','CycleController@deleteCycle');
 
     $router->get('date','CycleController@getDate');

@@ -52,19 +52,41 @@ class CycleController extends Controller
             'user_id' => $request->input('user_id'),
             'date_start' => $date,
             'date_end' => $datetime->add(new \DateInterval('P7D')),
-            'length_cycle_id' => 2,
+            'length_cycle_id' => 3,
         ]);
         $cycle->save();
         $cycle_id = $cycle->id;
-        $this->createtask($cycle_id);
-        $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
-        $task_id = $task['0']->id;
-        $this->createSteps($cycle_id, $task_id, $request->input('user_id'));
-        $this->createRewards($cycle_id, $task_id, $request->input('user_id'));
+        $this->createWeektask($cycle_id);
         return response()->json($cycle);
     }else{
         return response()->json('The token does not match');
     }
+
+    }
+
+    public function createWeektask($cycle_id)
+    {
+        for ($i = 0; $i < 5; $i++ ) {
+            $task = new Task([
+                'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
+                'cycle_id' => $cycle_id,
+                'number' => $i + 1,
+                'day_id' => 1,
+                'priority_id' => 2,
+            ]);
+            $task->save();
+        }
+        for ($i = 0; $i < 10; $i++ ) {
+            $task = new Task([
+                'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
+                'cycle_id' => $cycle_id,
+                'number' => $i + 1,
+                'day_id' => 1,
+                'priority_id' => 3,
+            ]);
+            $task->save();
+        }
+
 
     }
 
@@ -169,6 +191,13 @@ class CycleController extends Controller
     {
         $user_id = $request->input('user_id');
         $cycle = Cycle::where('user_id','=',$user_id)->get();
+        return response()->json($cycle);
+    }
+
+    public function getWeek(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $cycle = Cycle::where([['user_id','=',$user_id],['length_cycle_id','=', 3 ]])->get();
         return response()->json($cycle);
     }
 
