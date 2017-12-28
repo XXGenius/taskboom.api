@@ -19,7 +19,7 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
     $router->post('createcycle','CycleController@createLongCycle');
 
-    $router->post('createweek','CycleController@createWeek');
+    $router->post('createweek','CycleController@createWeekCycle');
 
     $router->delete('cycle/{id}','CycleController@deleteCycle');
 

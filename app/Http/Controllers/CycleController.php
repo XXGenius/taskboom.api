@@ -42,7 +42,7 @@ class CycleController extends Controller
         }
     }
 
-    public function createWeek(Request $request)
+    public function createWeekCycle(Request $request)
     {
         $token = $request->input('token');
         $datetime  = new \DateTime();
