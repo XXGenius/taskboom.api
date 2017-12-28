@@ -57,7 +57,7 @@ class CycleController extends Controller
         $cycle->save();
         $cycle_id = $cycle->id;
         $this->createWeektask($cycle_id);
-        $this->createReward($cycle_id, 200, $request->input('user_id'));
+        $this->createReward($cycle_id,  $request->input('user_id'));
         return response()->json($cycle);
     }else{
         return response()->json('The token does not match');
@@ -138,13 +138,13 @@ class CycleController extends Controller
 
   }
 
-   public function createReward($cycle_id, $task_id, $user_id)
+   public function createReward($cycle_id,  $user_id)
    {
        $step = new Reward([
            'user_id' => $user_id,
            'text' => 'Введите описание награды и нажмите Enter',
            'cycle_id' => $cycle_id,
-           'task_id' => $task_id
+
        ]);
        $step->save();
    }
