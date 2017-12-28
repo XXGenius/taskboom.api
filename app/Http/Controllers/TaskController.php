@@ -72,7 +72,6 @@ class TaskController extends Controller
         if($token == $this->token){
             $task  = Task::find($id);
             $task->checked = $request->input('checked');
-            $task->actual_time = date("Y-m-d H:i:s");
             $task->save();
             return response()->json($task);
         }else{
