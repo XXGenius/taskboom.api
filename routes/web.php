@@ -25,6 +25,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->post('createlength','LengthCycleController@createLengthCycle');
 
+    $router->get('length','LengthCycleController@index');
+
     $router->get('long','CycleController@getLong');
 
     $router->get('allsteps','StepController@index');

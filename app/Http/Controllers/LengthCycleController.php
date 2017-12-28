@@ -24,4 +24,10 @@ class LengthCycleController extends Controller
             return response()->json('The token does not match');
         }
     }
+
+    public function index()
+    {
+        $length = LengthCycle::all();
+        return response()->json($length);
+    }
 }

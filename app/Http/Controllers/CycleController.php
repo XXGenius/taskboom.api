@@ -42,6 +42,32 @@ class CycleController extends Controller
         }
     }
 
+    public function createWeek(Request $request)
+    {
+        $token = $request->input('token');
+        $datetime  = new \DateTime();
+        $date = $datetime->format('Y-m-d');
+        if($token == $this->token){
+        $cycle = new Cycle([
+            'user_id' => $request->input('user_id'),
+            'date_start' => $date,
+            'date_end' => $datetime->add(new \DateInterval('P7D')),
+            'length_cycle_id' => 2,
+        ]);
+        $cycle->save();
+        $cycle_id = $cycle->id;
+        $this->createtask($cycle_id);
+        $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
+        $task_id = $task['0']->id;
+        $this->createSteps($cycle_id, $task_id, $request->input('user_id'));
+        $this->createRewards($cycle_id, $task_id, $request->input('user_id'));
+        return response()->json($cycle);
+    }else{
+        return response()->json('The token does not match');
+    }
+
+    }
+
   public function createtask($cycle_id)
   {
       for ($i = 0; $i < 3; $i++ ) {
