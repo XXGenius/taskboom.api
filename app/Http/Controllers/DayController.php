@@ -38,4 +38,10 @@ class DayController extends Controller
         return $day;
 
     }
+
+    public function index()
+    {
+        $day = Day::all();
+        return response()->json($day);
+    }
 }
