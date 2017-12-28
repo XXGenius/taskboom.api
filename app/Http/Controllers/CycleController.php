@@ -144,6 +144,7 @@ class CycleController extends Controller
            'user_id' => $user_id,
            'text' => 'Введите описание награды и нажмите Enter',
            'cycle_id' => $cycle_id,
+           'task_id' => 200
 
        ]);
        $step->save();
