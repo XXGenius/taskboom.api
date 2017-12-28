@@ -72,7 +72,7 @@ class CycleController extends Controller
                 'cycle_id' => $cycle_id,
                 'number' => $i + 1,
                 'day_id' => 1,
-                'priority_id' => 2,
+                'priority_id' => 1,
             ]);
             $task->save();
         }
@@ -82,7 +82,7 @@ class CycleController extends Controller
                 'cycle_id' => $cycle_id,
                 'number' => $i + 1,
                 'day_id' => 1,
-                'priority_id' => 3,
+                'priority_id' => 2,
             ]);
             $task->save();
         }
