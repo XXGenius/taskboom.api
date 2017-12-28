@@ -29,4 +29,10 @@ class PriorityController extends Controller
             return response()->json('The token does not match');
         }
     }
+
+    public function index()
+    {
+        $priority = Priority::all();
+        return response()->json($priority);
+    }
 }
