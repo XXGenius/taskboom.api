@@ -37,7 +37,7 @@ class DayController extends Controller
     {
         $task = new Task([
             'text' => 'Введите описание задачи',
-            'cycle_id' => 100,
+            'cycle_id' => 106,
             'number' =>  1,
             'day_id' => $day_id,
             'priority_id' => 1,
@@ -50,7 +50,7 @@ class DayController extends Controller
         for ($i = 0; $i < 5; $i++ ) {
             $task = new Task([
                 'text' => 'Введите описание задачи №' . ($i + 1) . ' и нажмите Enter ',
-                'cycle_id' => 100,
+                'cycle_id' => 106,
                 'number' => $i + 1,
                 'day_id' => $day_id,
                 'priority_id' => 2,
