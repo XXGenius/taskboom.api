@@ -61,6 +61,8 @@ class CycleController extends Controller
             'date' => $date,
         ]);
         $day->save();
+        $day_id = $day->id;
+        $this->createDayTask($day_id);
         $cycle_id = $cycle->id;
         $this->createWeektask($cycle_id);
         $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
@@ -71,6 +73,35 @@ class CycleController extends Controller
         return response()->json('The token does not match');
     }
 
+    }
+
+    public function createDayTask($day_id)
+    {
+        $task = new Task([
+            'text' => 'Введите описание задачи',
+            'cycle_id' => 106,
+            'number' =>  1,
+            'day_id' => $day_id,
+            'priority_id' => 1,
+            'comment_task' => 'test',
+            'comment_progress' => 'test1',
+            'gratitude_day' => 'test3'
+        ]);
+        $task->save();
+
+        for ($i = 0; $i < 5; $i++ ) {
+            $task = new Task([
+                'text' => 'Введите описание задачи №' . ($i + 1) . ' и нажмите Enter ',
+                'cycle_id' => 106,
+                'number' => $i + 1,
+                'day_id' => $day_id,
+                'priority_id' => 2,
+                'comment_task' => 'test',
+                'comment_progress' => 'test1',
+                'gratitude_day' => 'test3'
+            ]);
+            $task->save();
+        }
     }
 
     public function createWeektask($cycle_id)
