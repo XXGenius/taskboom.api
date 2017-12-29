@@ -91,7 +91,7 @@ class CycleController extends Controller
 
         for ($i = 0; $i < 5; $i++ ) {
             $task = new Task([
-                'text' => 'Введите описание задачи №' . ($i + 1) . ' и нажмите Enter ',
+                'text' => 'Введите описание задачи №' . ($i + 1),
                 'cycle_id' => 106,
                 'number' => $i + 1,
                 'day_id' => $day_id,
@@ -108,7 +108,7 @@ class CycleController extends Controller
     {
         for ($i = 0; $i < 5; $i++ ) {
             $task = new Task([
-                'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
+                'text' => 'Введите описание задачи №'.($i+1).'',
                 'cycle_id' => $cycle_id,
                 'number' => $i + 1,
                 'day_id' => 1,
@@ -118,7 +118,7 @@ class CycleController extends Controller
         }
         for ($i = 0; $i < 10; $i++ ) {
             $task = new Task([
-                'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
+                'text' => 'Введите описание задачи №'.($i+1),
                 'cycle_id' => $cycle_id,
                 'number' => $i + 1,
                 'day_id' => 1,
@@ -134,7 +134,7 @@ class CycleController extends Controller
   {
       for ($i = 0; $i < 3; $i++ ) {
           $task = new Task([
-              'text' => 'Введите описание задачи №'.($i+1).' и нажмите Enter ',
+              'text' => 'Введите описание задачи №'.($i+1),
               'cycle_id' => $cycle_id,
               'number' => $i + 1,
               'day_id' => 1,
@@ -150,7 +150,7 @@ class CycleController extends Controller
       for ($i = 0; $i < 10; $i++ ) {
       $step = new Step([
           'user_id' => $user_id,
-          'text' => 'Введите описание шага и нажмите Enter',
+          'text' => 'Введите описание шага',
           'cycle_id' => $cycle_id,
           'task_id' => $task_id
       ]);
@@ -159,7 +159,7 @@ class CycleController extends Controller
       for ($i = 0; $i < 4; $i++ ) {
           $step = new Step([
               'user_id' => $user_id,
-              'text' => 'Введите описание шага и нажмите Enter',
+              'text' => 'Введите описание шага',
               'cycle_id' => $cycle_id,
               'task_id' => $task_id + 1
           ]);
@@ -168,7 +168,7 @@ class CycleController extends Controller
       for ($i = 0; $i < 4; $i++ ) {
           $step = new Step([
               'user_id' => $user_id,
-              'text' => 'Введите описание шага и нажмите Enter',
+              'text' => 'Введите описание шага',
               'cycle_id' => $cycle_id,
               'task_id' => $task_id + 2
           ]);
@@ -181,7 +181,7 @@ class CycleController extends Controller
    {
        $step = new Reward([
            'user_id' => $user_id,
-           'text' => 'Введите описание награды и нажмите Enter',
+           'text' => 'Введите описание награды',
            'cycle_id' => $cycle_id,
            'task_id' => $task_id
 
@@ -194,7 +194,7 @@ class CycleController extends Controller
         for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
-                'text' => 'Введите описание награды и нажмите Enter',
+                'text' => 'Введите описание награды ',
                 'cycle_id' => $cycle_id,
                 'task_id' => $task_id
             ]);
@@ -203,7 +203,7 @@ class CycleController extends Controller
         for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
-                'text' => 'Введите описание награды и нажмите Enter',
+                'text' => 'Введите описание награды ',
                 'cycle_id' => $cycle_id,
                 'task_id' => $task_id + 1
             ]);
@@ -212,7 +212,7 @@ class CycleController extends Controller
         for ($i = 0; $i < 3; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
-                'text' => 'Введите описание награды и нажмите Enter',
+                'text' => 'Введите описание награды ',
                 'cycle_id' => $cycle_id,
                 'task_id' => $task_id + 2
             ]);
