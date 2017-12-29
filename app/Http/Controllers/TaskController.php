@@ -121,4 +121,16 @@ class TaskController extends Controller
             return response()->json('The token does not match');
         }
     }
+
+    public function getDayTasks(Request $request)
+    {
+        $token = $request->input('token');
+        if($token == $this->token){
+            $id = $request->input('day_id');
+            $tasks = Task::where('day_id','=',$id)->get();
+            return response()->json($tasks);
+        }else{
+            return response()->json('The token does not match');
+        }
+    }
 }

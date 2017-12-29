@@ -31,6 +31,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('days','DayController@index');
 
+    $router->get('daytasks','TaskController@getDayTasks');
+
     $router->post('createlength','LengthCycleController@createLengthCycle');
 
     $router->get('length','LengthCycleController@index');

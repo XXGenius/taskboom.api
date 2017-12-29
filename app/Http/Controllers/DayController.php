@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Day;
+use App\Task;
 use Illuminate\Http\Request;
 
 class DayController extends Controller
@@ -24,9 +25,40 @@ class DayController extends Controller
                 'date' => $date,
             ]);
             $day->save();
+            $id = $day->id;
+            $this->createDayTask($id);
             return response()->json($day);
         }else{
             return response()->json('The token does not match');
+        }
+    }
+
+    public function createDayTask($day_id)
+    {
+        $task = new Task([
+            'text' => 'Введите описание задачи',
+            'cycle_id' => 98,
+            'number' =>  1,
+            'day_id' => $day_id,
+            'priority_id' => 1,
+            'comment_task' => 'test',
+            'comment_progress' => 'test1',
+            'gratitude_day' => 'test3'
+        ]);
+        $task->save();
+
+        for ($i = 0; $i < 5; $i++ ) {
+            $task = new Task([
+                'text' => 'Введите описание задачи №' . ($i + 1) . ' и нажмите Enter ',
+                'cycle_id' => 98,
+                'number' => $i + 1,
+                'day_id' => $day_id,
+                'priority_id' => 2,
+                'comment_task' => 'test',
+                'comment_progress' => 'test1',
+                'gratitude_day' => 'test3'
+            ]);
+            $task->save();
         }
     }
 
