@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Day extends Model
 {
     protected $fillable = [
-        'date', 'user_id'
+        'date', 'user_id', 'comment_task', 'comment_progress', 'gratitude_day'
     ];
 
 }
