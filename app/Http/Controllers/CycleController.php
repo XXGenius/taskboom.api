@@ -250,7 +250,7 @@ class CycleController extends Controller
     {
         $date = date("Y-m-d");
         $user_id = $request->input('user_id');
-        $cycle = Cycle::where([['user_id','=',$user_id],['length_cycle_id','=', 3 ],['date_end','<=', $date]])->get();
+        $cycle = Cycle::where([['user_id','=',$user_id],['length_cycle_id','=', 3 ],['date_end','>=', $date]])->get();
         return response()->json($cycle);
     }
 
