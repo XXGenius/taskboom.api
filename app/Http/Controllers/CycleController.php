@@ -200,7 +200,7 @@ class CycleController extends Controller
             ]);
             $step->save();
         }
-        for ($i = 0; $i < 3; $i++ ) {
+        for ($i = 0; $i < 1; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
                 'text' => 'Введите описание награды ',
@@ -209,7 +209,7 @@ class CycleController extends Controller
             ]);
             $step->save();
         }
-        for ($i = 0; $i < 3; $i++ ) {
+        for ($i = 0; $i < 1; $i++ ) {
             $step = new Reward([
                 'user_id' => $user_id,
                 'text' => 'Введите описание награды ',
