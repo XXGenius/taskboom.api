@@ -39,27 +39,27 @@ class DayController extends Controller
     public function createDayTask($day_id)
     {
         $task = new Task([
-            'text' => 'Введите описание задачи',
+            'text' => '',
             'cycle_id' => 106,
             'number' =>  1,
             'day_id' => $day_id,
             'priority_id' => 1,
-            'comment_task' => 'test',
-            'comment_progress' => 'test1',
-            'gratitude_day' => 'test3'
+            'comment_task' => '',
+            'comment_progress' => '',
+            'gratitude_day' => ''
         ]);
         $task->save();
 
         for ($i = 0; $i < 5; $i++ ) {
             $task = new Task([
-                'text' => 'Введите описание задачи №' . ($i + 1),
+                'text' => '' ,
                 'cycle_id' => 106,
                 'number' => $i + 1,
                 'day_id' => $day_id,
                 'priority_id' => 2,
-                'comment_task' => 'test',
-                'comment_progress' => 'test1',
-                'gratitude_day' => 'test3'
+                'comment_task' => '',
+                'comment_progress' => '',
+                'gratitude_day' => ''
             ]);
             $task->save();
         }
