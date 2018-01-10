@@ -251,7 +251,7 @@ class CycleController extends Controller
         $datetime  = new \DateTime();
         $date = $datetime->format('Y-m-d');
         $user_id = $request->input('user_id');
-        $cycle = Cycle::where([['user_id','=',$user_id],['length_cycle_id','=', 3 ],['date_end','<=', '2018-01-15' ]])->get();
+        $cycle = Cycle::where([['user_id','=',$user_id],['length_cycle_id','=', 3 ],['date_end','<=', $date ]])->get();
         return response()->json($cycle);
     }
 
