@@ -23,9 +23,9 @@ class DayController extends Controller
             $day = new Day([
                 'user_id' => $request->input('user_id'),
                 'date' => $date,
-                'gratitude_day' => '',
-                'comment_progress' => '',
-                'comment_task' => ''
+                'gratitude_day' => 'Gratitude',
+                'comment_progress' => 'Comment progress',
+                'comment_task' => 'Comment tasks'
             ]);
             $day->save();
             $id = $day->id;
