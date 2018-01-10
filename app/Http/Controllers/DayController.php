@@ -79,4 +79,31 @@ class DayController extends Controller
         $day = Day::all();
         return response()->json($day);
     }
+
+    public function updateProgressComment(Request $request, $id)
+    {
+        $day  = Day::find($id);
+        $day->comment_progress = $request->input('comment_progress');
+        $day->save();
+        return response()->json($day);
+
+    }
+
+    public function updateTaskComment(Request $request, $id)
+    {
+        $day  = Day::find($id);
+        $day->comment_task = $request->input('comment_task');
+        $day->save();
+        return response()->json($day);
+
+    }
+
+    public function updateGratitude(Request $request, $id)
+    {
+        $day  = Day::find($id);
+        $day->gratitude_day = $request->input('gratitude_day');
+        $day->save();
+        return response()->json($day);
+
+    }
 }

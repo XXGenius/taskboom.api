@@ -69,6 +69,12 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('mytasks', 'TaskController@getTasks');
 
+    $router->put('progress/{id}','DayController@updateProgressComment');
+
+    $router->put('comment/{id}','DayController@updateTaskComment');
+
+    $router->put('gratitude/{id}','DayController@updateGratitude');
+
     $router->post('user','AuthController@createUser');
 
     $router->put('user/{id}','AuthController@updateUser');
