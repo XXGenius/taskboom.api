@@ -83,6 +83,8 @@ $router->group(['prefix' => 'api/v1/'], function() use ($router)
 
     $router->get('user/{id}','AuthController@getUserById');
 
+    $router->get('user','AuthController@getUserByEmail');
+
     $router->get('register','AuthController@register');
 
     $router->get('login','AuthController@login');
