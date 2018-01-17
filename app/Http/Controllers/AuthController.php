@@ -34,9 +34,9 @@ class AuthController extends Controller
                 'profile' => $user['profile']
             ]);
             $userdb->save();
-            return response()->json($user);
+            return response()->json($userdb);
         }
-        return response()->json($user);
+        return response()->json($userdb);
     }
 
     public function getCurrentUser(Request $request)
