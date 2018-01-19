@@ -17,6 +17,26 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
+    $router->post('createreview','ReviewController@addReview');
+
+    $router->get('review','ReviewController@getReview');
+
+    $router->get('victory','ReviewController@getVictory');
+
+    $router->put('victory/{id}','ReviewController@updateVictory');
+
+    $router->get('lesson','ReviewController@getLesson');
+
+    $router->put('lesson/{id}','ReviewController@updateLesson');
+
+    $router->get('unrested','ReviewController@getUnrested');
+
+    $router->put('unrested/{id}','ReviewController@updateUnrested');
+
+    $router->get('specific','ReviewController@getSpecific');
+
+    $router->put('specific/{id}','ReviewController@updateSpecific');
+
     $router->post('createcycle','CycleController@createLongCycle');
 
     $router->post('createweek','CycleController@createWeekCycle');
