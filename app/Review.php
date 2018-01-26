@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     protected $fillable = [
-        'user_id', 'cycle_id'
+        'user_id', 'cycle_id', 'date_start', 'date_end'
     ];
 
 }

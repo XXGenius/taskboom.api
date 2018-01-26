@@ -14,6 +14,7 @@ use App\Review;
 use App\Specific;
 use App\Unrested;
 use App\Victory;
+
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -28,9 +29,12 @@ class ReviewController extends Controller
 
     public function addReview(Request $request)
     {
+        $date = new \DateTime($request->input('date_end'));
         $review = new Review([
             'user_id' => $request->input('user_id'),
             'cycle_id' => $request->input('cycle_id'),
+            'date_end' => $date,
+            'date_start' => $date->modify('-2 day')
         ]);
         $review->save();
         $review_id = $review->id;
