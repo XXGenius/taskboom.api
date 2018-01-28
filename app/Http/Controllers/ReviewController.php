@@ -29,12 +29,11 @@ class ReviewController extends Controller
 
     public function addReview($cycle_id, $user_id)
     {
-        $datetime  = new \DateTime();
         $review = new Review([
             'user_id' => $user_id,
             'cycle_id' => $cycle_id,
-            'date_end' => $datetime->add(new \DateInterval('P5D')),
-            'date_start' => $datetime->add(new \DateInterval('P6D'))
+            'date_end' =>  date("Y-m-d", (time()+3600*24*5)),
+            'date_start' => date("Y-m-d", (time()+3600*24*6))
         ]);
         $review->save();
         $review_id = $review->id;
