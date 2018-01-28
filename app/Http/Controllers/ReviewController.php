@@ -32,7 +32,7 @@ class ReviewController extends Controller
         $review = new Review([
             'user_id' => $user_id,
             'cycle_id' => $cycle_id,
-            'date_end' =>  date("Y-m-d", (time()+3600*24*5)),
+            'date_end' =>  date("Y-m-d", (time()+3600*24*7)),
             'date_start' => date("Y-m-d", (time()+3600*24*6))
         ]);
         $review->save();
