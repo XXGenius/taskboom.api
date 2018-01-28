@@ -23,7 +23,7 @@ class ReviewController extends Controller
     {
         $date = date("Y-m-d");
         $cycle_id = $request->input('cycle_id');
-        $review = Review::where([['cycle_id','=', $cycle_id], ['date_start','>=',$date], ['date_end','<=',$date]])->get();
+        $review = Review::where([['cycle_id','=', $cycle_id], ['date_start','>=', '2018-1-28'], ['date_end','<=','2018-1-28']])->get();
         return response()->json($review);
     }
 
