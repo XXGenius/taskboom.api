@@ -21,20 +21,20 @@ class ReviewController extends Controller
 {
     public function getReview(Request $request)
     {
-        $user_id = $request->input('user_id');
+        $date = date("Y-m-d");
         $cycle_id = $request->input('cycle_id');
-        $review = Review::where([['user_id','=',$user_id],['cycle_id','=', $cycle_id]])->get();
+        $review = Review::where([['cycle_id','=', $cycle_id], ['date_start','>=',$date], ['date_end','<=',$date]])->get();
         return response()->json($review);
     }
 
-    public function addReview(Request $request)
+    public function addReview($cycle_id, $user_id)
     {
-        $date = new \DateTime($request->input('date_end'));
+        $datetime  = new \DateTime();
         $review = new Review([
-            'user_id' => $request->input('user_id'),
-            'cycle_id' => $request->input('cycle_id'),
-            'date_end' => $date,
-            'date_start' => $date->modify('-2 day')
+            'user_id' => $user_id,
+            'cycle_id' => $cycle_id,
+            'date_end' => $datetime->add(new \DateInterval('P5D')),
+            'date_start' => $datetime->add(new \DateInterval('P6D'))
         ]);
         $review->save();
         $review_id = $review->id;

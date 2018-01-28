@@ -64,6 +64,8 @@ class CycleController extends Controller
         $day_id = $day->id;
         $this->createDayTask($day_id);
         $cycle_id = $cycle->id;
+        $review = new ReviewController();
+        $review->addReview($cycle_id, $request->input('user_id'));
         $this->createWeektask($cycle_id);
         $task  = Task::where([['cycle_id','=',$cycle_id],['number','=', 1]])->get();
         $task_id = $task['0']->id;
