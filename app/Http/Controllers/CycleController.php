@@ -228,7 +228,7 @@ class CycleController extends Controller
         $now  = new \DateTime();
         $user = User::find($request->input('user_id'));
         $dateUser = $user->created_at;
-        $date = \DateTime::createFromFormat("Y-m-d", $dateUser); // задаем дату в любом формате
+        $date = new \DateTime($dateUser); // задаем дату в любом формате
         $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
         $i =  $interval->d; // кол-во дней
         return response()->json($i);
