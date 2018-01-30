@@ -15,7 +15,6 @@ use App\Reward;
 use App\Step;
 use App\Task;
 use App\User;
-use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 
 class CycleController extends Controller
@@ -226,10 +225,10 @@ class CycleController extends Controller
     }
 
     public function getDate(Request $request) {
-        $now = new DateTime(); // текущее время на сервере
+        $now  = new \DateTime();
         $user = User::find($request->input('user_id'));
         $dateUser = $user->created_at;
-        $date = DateTime::createFromFormat("Y-m-d", $dateUser); // задаем дату в любом формате
+        $date = \DateTime::createFromFormat("Y-m-d", $dateUser); // задаем дату в любом формате
         $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
         $i =  $interval->d; // кол-во дней
         return response()->json($i);
