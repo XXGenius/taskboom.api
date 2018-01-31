@@ -18,20 +18,16 @@ class AuthController extends Controller
 
     public function loginAuth(Request $request)
     {
-        $s = file_get_contents('http://ulogin.ru/token.php?token=' . $request->input('token') . '&host=' . $_SERVER['HTTP_HOST']);
-        $user = json_decode($s, true);
-        $uid = $user['uid']; //ToDo исправвить вход !!!!
+        $uid = $request->input('uid'); //ToDo исправвить вход !!!!
         $userdb = User::where('uid','=',$uid)->get();
         if(count($userdb) == 0){
             $userdb = new User([
-                'email' => $user['uid'].'@boom.com',
-                'first_name' => $user['first_name'],
-                'last_name' => $user['last_name'],
-                'uid' => $user['uid'],
-                'photo' => $user['photo'],
-                'identity' => $user['identity'],
-                'network' => $user['network'],
-                'profile' => $user['profile']
+                'email' => $uid .'@boom.com',
+                'first_name' => $request->input('name'),
+                'last_name' => $request->input('name'),
+                'uid' => $uid,
+                'photo' => $request->input('image'),
+                'network' => $request->input('provider')
             ]);
             $userdb->save();
             return response()->json($userdb);
