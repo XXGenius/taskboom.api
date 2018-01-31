@@ -27,12 +27,14 @@ class AuthController extends Controller
                 'last_name' => $request->input('name'),
                 'uid' => $uid,
                 'photo' => $request->input('image'),
-                
+
             ]);
             $userdb->save();
             return response()->json($userdb);
+        }else{
+            return response()->json($userdb);
         }
-        return response()->json($userdb);
+
     }
 
     public function getCurrentUser(Request $request)
