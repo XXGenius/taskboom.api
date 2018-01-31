@@ -27,7 +27,7 @@ class AuthController extends Controller
                 'last_name' => $request->input('name'),
                 'uid' => $uid,
                 'photo' => $request->input('image'),
-                'network' => $request->input('provider')
+                
             ]);
             $userdb->save();
             return response()->json($userdb);
