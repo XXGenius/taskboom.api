@@ -19,8 +19,8 @@ class AuthController extends Controller
     public function loginAuth(Request $request)
     {
         $uid = $request->input('uid'); //ToDo исправвить вход !!!!
-        $userdb = User::where('uid','=',$uid)->get();
-        if(count($userdb) == 0){
+        $user = User::where('uid','=',$uid)->get();
+        if(count($user) == 0){
             $userdb = new User([
                 'email' => $uid .'@boom.com',
                 'first_name' => $request->input('name'),
@@ -32,7 +32,7 @@ class AuthController extends Controller
             $userdb->save();
             return response()->json($userdb);
         }else{
-            return response()->json($userdb);
+            return response()->json($user);
         }
 
     }
