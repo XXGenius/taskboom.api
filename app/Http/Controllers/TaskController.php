@@ -122,6 +122,11 @@ class TaskController extends Controller
             return response()->json('The token does not match');
         }
     }
+    public function getWeekTasks($week_id)
+    {
+        $tasks = Task::where([['cycle_id', '=', $week_id], ['priority_id', '=', 1]])->get();
+        return $tasks;
+    }
 
     public function getDayTasks(Request $request)
     {
@@ -129,7 +134,7 @@ class TaskController extends Controller
         if($token == $this->token){
             $week = Cycle::find($request->input('week_id'));
             if ($week->autofill) {
-                $tasks = $this->getTasks($request->input('week_id'));
+                $tasks = $this->getWeekTasks($request->input('week_id'));
                 $date = $this->getDate($request->input('week_id'));
                 $text = $tasks[$date]->text;
                 if(isset($text)){
