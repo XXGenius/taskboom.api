@@ -83,7 +83,7 @@ class CycleController extends Controller
     public function onAutofill(Request $request, $id)
     {
         $week = Cycle::find($id);
-        $week->autofill = 1;
+        $week->autofill = $request->input('autofill');
         $week->save();
         return response()->json($week);
 
