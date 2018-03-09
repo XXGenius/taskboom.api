@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers;
+use App\Cycle;
 use App\Task;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
@@ -126,11 +127,33 @@ class TaskController extends Controller
     {
         $token = $request->input('token');
         if($token == $this->token){
+            $week = Cycle::find($request->input('week_id'));
+            if ($week->autofill) {
+                $tasks = $this->getTasks($request->input('week_id'));
+                $date = $this->getDate($request->input('week_id'));
+                $text = $tasks[$date]->text;
+                if(isset($text)){
+                    $text = '';
+                }
+            }
             $id = $request->input('day_id');
             $tasks = Task::where('day_id','=',$id)->get();
+            $tasks[$date]->text = $text;
+            $tasks[$date]->save();
             return response()->json($tasks);
         }else{
             return response()->json('The token does not match');
         }
+    }
+
+    public function getDate($id)
+    {
+        $now = new \DateTime();
+        $week = Cycle::find($id);
+        $dateUser = $week->created_at;
+        $date = new \DateTime($dateUser); // задаем дату в любом формате
+        $interval = $now->diff($date); // получаем разницу в виде объекта DateInterval
+        $i = $interval->days; // кол-во дней
+        return $i;
     }
 }
