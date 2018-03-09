@@ -138,7 +138,7 @@ class TaskController extends Controller
                 $date = $this->getDate($request->input('week_id'));
                 $text = $tasks[$date]->text;
                 if(isset($text)){
-                    $text = '';
+                    $text = '!';
                 }
             }
             $id = $request->input('day_id');
