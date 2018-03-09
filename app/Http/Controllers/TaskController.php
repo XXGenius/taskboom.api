@@ -140,12 +140,17 @@ class TaskController extends Controller
 //                if(isset($text)){
 //                    $text = '!';
 //                }
+                $id = $request->input('day_id');
+                $tasks = Task::where('day_id','=',$id)->get();
+                $tasks[$date]->text = $text;
+                $tasks[$date]->save();
+                return response()->json($tasks);
+            }else{
+                $id = $request->input('day_id');
+                $tasks = Task::where('day_id','=',$id)->get();
+                return response()->json($tasks);
             }
-            $id = $request->input('day_id');
-            $tasks = Task::where('day_id','=',$id)->get();
-            $tasks[$date]->text = $text;
-            $tasks[$date]->save();
-            return response()->json($tasks);
+
         }else{
             return response()->json('The token does not match');
         }
