@@ -80,6 +80,15 @@ class CycleController extends Controller
 
     }
 
+    public function onAutofill(Request $request, $id)
+    {
+        $week = Cycle::find($id);
+        $week->autofill = $request->input('autofill');
+        $week->save();
+        return response()->json($week);
+
+    }
+
     public function createDayTask($day_id)
     {
         $task = new Task([

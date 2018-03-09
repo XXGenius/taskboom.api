@@ -18,6 +18,8 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api/v1/'], function() use ($router)
 {
 
+    $router->put('weekautofill/{id}','CycleController@onAutofill');
+
     $router->post('createreview','ReviewController@addReview');
 
     $router->get('review','ReviewController@getReview');
