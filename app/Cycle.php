@@ -14,6 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cycle extends Model
 {
     protected $fillable = [
-        'date_start', 'date_end', 'length_cycle_id' , 'user_id', 'day_id'
+        'date_start', 'date_end', 'length_cycle_id' , 'user_id', 'day_id', 'autofill'
     ];
 }
