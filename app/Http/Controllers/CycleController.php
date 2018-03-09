@@ -56,7 +56,7 @@ class CycleController extends Controller
             'date_start' => $date,
             'date_end' => $datetime->add(new \DateInterval('P7D')),
             'length_cycle_id' => 3,
-            'autofill' => false
+            'autofill' => true
         ]);
         $cycle->save();
         $day = new Day([
