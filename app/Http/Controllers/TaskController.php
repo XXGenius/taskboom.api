@@ -131,7 +131,7 @@ class TaskController extends Controller
                 $tasks = $this->getWeekTasks($request->input('week_id'));
                 $date = $this->getDate($request->input('week_id'));
                 $task = $tasks[$date];
-                if ($task) {
+                if ($date < 5 ) {
                     $text = $tasks[$date]->text;
                     $id = $request->input('day_id');
                     $tasks = Task::where('day_id', '=', $id)->get();
