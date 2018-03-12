@@ -137,17 +137,17 @@ class TaskController extends Controller
                 $tasks = $this->getWeekTasks($request->input('week_id'));
                 $date = $this->getDate($request->input('week_id'));
                 $text = $tasks[$date]->text;
-                if(!isset($tasks[$date])){
-                    $id = $request->input('day_id');
-                    $tasks = Task::where('day_id','=',$id)->get();
-                    return response()->json($tasks);
-                }
                 if(!isset($text)){
                     $text = '!';
                 }
                 $id = $request->input('day_id');
                 $tasks = Task::where('day_id','=',$id)->get();
                 $tasks[$date]->text = $text;
+                if(!isset($tasks[$date])){
+                    $id = $request->input('day_id');
+                    $tasks = Task::where('day_id','=',$id)->get();
+                    return response()->json($tasks);
+                }
                 $tasks[$date]->save();
                 return response()->json($tasks);
             }else{
