@@ -137,7 +137,7 @@ class TaskController extends Controller
                     $tasks = Task::where('day_id', '=', $id)->get();
                     $tasks[$date]->text = $text;
                     $tasks[$date]->save();
-                    return response()->json($tasks);
+                    return response()->json($task);
 
                 } else {
                     $id = $request->input('day_id');
