@@ -21,37 +21,17 @@ class DayController extends Controller
         $token = $request->input('token');
         $date = $request->input('date');
         if ($token == $this->token) {
-            $week = Cycle::find($request->input('week_id'));
-            if ($week->autofill) {
-                $tasks = $this->getTasks($request->input('week_id'));
-                $date = $this->getDate($request->input('week_id'));
-                $text = $tasks[$date]->text;
-                if(isset($text)){
-                    $text = '';
-                }
-                $day = new Day([
-                    'user_id' => $request->input('user_id'),
-                    'date' => $date,
-                    'gratitude_day' => '',
-                    'comment_progress' => '',
-                    'comment_task' => ''
-                ]);
-                $day->save();
-                $id = $day->id;
-                $this->createDayTask($id, $text);
-            } else {
-                $day = new Day([
-                    'user_id' => $request->input('user_id'),
-                    'date' => $date,
-                    'gratitude_day' => '',
-                    'comment_progress' => '',
-                    'comment_task' => ''
-                ]);
-                $day->save();
-                $id = $day->id;
-                $this->createDayTask($id);
-                return response()->json($day);
-            }
+            $day = new Day([
+                'user_id' => $request->input('user_id'),
+                'date' => $date,
+                'gratitude_day' => '',
+                'comment_progress' => '',
+                'comment_task' => ''
+            ]);
+            $day->save();
+            $id = $day->id;
+            $this->createDayTask($id);
+            return response()->json($day);
         } else {
             return response()->json('The token does not match');
         }
@@ -74,10 +54,10 @@ class DayController extends Controller
         return $tasks;
     }
 
-    public function createDayTask($day_id, $text)
+    public function createDayTask($day_id)
     {
         $task = new Task([
-            'text' => $text,
+            'text' => '',
             'cycle_id' => 106,
             'number' => 1,
             'day_id' => $day_id,
