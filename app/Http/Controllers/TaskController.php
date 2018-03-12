@@ -130,13 +130,12 @@ class TaskController extends Controller
             if ($week->autofill) {
                 $tasks = $this->getWeekTasks($request->input('week_id'));
                 $date = $this->getDate($request->input('week_id'));
-                $task = $tasks[$date];
                 if ($date < 5 ) {
                     $text = $tasks[$date]->text;
                     $id = $request->input('day_id');
                     $tasks = Task::where('day_id', '=', $id)->get();
-                    $tasks[$date]->text = $text;
-                    $tasks[$date]->save();
+                    $tasks[0]->text = $text;
+                    $tasks[0]->save();
                     return response()->json($tasks);
 
                 } else {
