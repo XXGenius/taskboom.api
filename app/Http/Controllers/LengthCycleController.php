@@ -17,10 +17,10 @@ class LengthCycleController extends Controller
     public function createLengthCycle(Request $request)
     {
         $token = $request->input('token');
-        if($token == $this->token){
+        if ($token == $this->token) {
             $task = LengthCycle::create($request->all());
-                return response()->json($task);
-        }else{
+            return response()->json($task);
+        } else {
             return response()->json('The token does not match');
         }
     }

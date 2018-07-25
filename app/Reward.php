@@ -14,6 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 class Reward extends Model
 {
     protected $fillable = [
-        'text', 'cycle_id' , 'user_id', 'task_id'
+        'text', 'cycle_id', 'user_id', 'task_id'
     ];
 }

@@ -19,7 +19,6 @@ class TaskController extends Controller
     {
         $token = $request->input('token');
         if ($token == $this->token) {
-//            $tasks = Task::where('date','=',$date  )->get();
             $tasks = Task::where([['date', '=', $date], ['user_id', '=', $request->input('user_id')]])->get();
             return response()->json($tasks);
 
@@ -130,7 +129,7 @@ class TaskController extends Controller
             if ($week->autofill) {
                 $tasks = $this->getWeekTasks($request->input('week_id'));
                 $date = $this->getDate($request->input('week_id'));
-                if ($date < 5 ) {
+                if ($date < 5) {
                     $text = $tasks[$date]->text;
                     $id = $request->input('day_id');
                     $tasks = Task::where('day_id', '=', $id)->get();
@@ -143,7 +142,7 @@ class TaskController extends Controller
                     $tasks = Task::where('day_id', '=', $id)->get();
                     return response()->json($tasks);
                 }
-                } else {
+            } else {
                 $id = $request->input('day_id');
                 $tasks = Task::where('day_id', '=', $id)->get();
                 return response()->json($tasks);

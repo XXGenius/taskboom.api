@@ -17,15 +17,15 @@ class PriorityController extends Controller
     public function create(Request $request)
     {
         $token = $request->input('token');
-        if($token == $this->token){
+        if ($token == $this->token) {
             $title = $request->input('title');
-            if(!$title){
+            if (!$title) {
                 return response()->json('пусто!');
-            }else if($title){
+            } else if ($title) {
                 $priority = Priority::create($request->all());
                 return response()->json($priority);
             }
-        }else{
+        } else {
             return response()->json('The token does not match');
         }
     }

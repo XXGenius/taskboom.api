@@ -18,29 +18,29 @@ class StepController extends Controller
     public function index(Request $request)
     {
         $token = $request->input('token');
-        if($token == $this->token){
-            $steps  = Step::all();
+        if ($token == $this->token) {
+            $steps = Step::all();
             return response()->json($steps);
-        }else{
+        } else {
             return response()->json('The token does not match');
         }
     }
 
-    public function getMySteps (Request $request)
+    public function getMySteps(Request $request)
     {
         $token = $request->input('token');
-        if($token == $this->token){
+        if ($token == $this->token) {
             $cycle_id = $request->input('cycle_id');
-            $steps  = Step::where('cycle_id','=',$cycle_id)->get();
+            $steps = Step::where('cycle_id', '=', $cycle_id)->get();
             return response()->json($steps);
-        }else{
+        } else {
             return response()->json('The token does not match');
         }
     }
 
     public function update(Request $request, $id)
     {
-        $step  = Step::find($id);
+        $step = Step::find($id);
         $step->text = $request->input('text');
         $step->save();
         return response()->json($step);

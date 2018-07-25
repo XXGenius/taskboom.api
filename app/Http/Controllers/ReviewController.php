@@ -23,8 +23,8 @@ class ReviewController extends Controller
     {
         $date = date("Y-m-d");
         $cycle_id = $request->input('cycle_id');
-        $review = Review::where([['cycle_id' , '=' , $cycle_id ],['date_start' , '=' , $date ]])
-            ->orWhere([['cycle_id' , '=' , $cycle_id ],['date_end' , '=' , $date ]])
+        $review = Review::where([['cycle_id', '=', $cycle_id], ['date_start', '=', $date]])
+            ->orWhere([['cycle_id', '=', $cycle_id], ['date_end', '=', $date]])
             ->get();
         return response()->json($review);
     }
@@ -34,8 +34,8 @@ class ReviewController extends Controller
         $review = new Review([
             'user_id' => $user_id,
             'cycle_id' => $cycle_id,
-            'date_end' =>  date("Y-m-d", (time()+3600*24*7)),
-            'date_start' => date("Y-m-d", (time()+3600*24*6))
+            'date_end' => date("Y-m-d", (time() + 3600 * 24 * 7)),
+            'date_start' => date("Y-m-d", (time() + 3600 * 24 * 6))
         ]);
         $review->save();
         $review_id = $review->id;
@@ -48,7 +48,7 @@ class ReviewController extends Controller
 
     public function addVictory($review_id)
     {
-        for ($i = 0; $i < 5; $i++ ) {
+        for ($i = 0; $i < 5; $i++) {
             $task = new Victory([
                 'text' => '',
                 'review_id' => $review_id
@@ -60,7 +60,7 @@ class ReviewController extends Controller
     public function getVictory(Request $request)
     {
         $review_id = $request->input('review_id');
-        $victory  = Victory::where('review_id','=',$review_id)->get();
+        $victory = Victory::where('review_id', '=', $review_id)->get();
         return response()->json($victory);
     }
 
@@ -75,7 +75,7 @@ class ReviewController extends Controller
 
     public function addLesson($review_id)
     {
-        for ($i = 0; $i < 3; $i++ ) {
+        for ($i = 0; $i < 3; $i++) {
             $lesson = new Lesson([
                 'text' => '',
                 'review_id' => $review_id
@@ -87,7 +87,7 @@ class ReviewController extends Controller
     public function getLesson(Request $request)
     {
         $review_id = $request->input('review_id');
-        $lesson  = Lesson::where('review_id','=',$review_id)->get();
+        $lesson = Lesson::where('review_id', '=', $review_id)->get();
         return response()->json($lesson);
     }
 
@@ -102,7 +102,7 @@ class ReviewController extends Controller
 
     public function addUnrested($review_id)
     {
-        for ($i = 0; $i < 3; $i++ ) {
+        for ($i = 0; $i < 3; $i++) {
             $unrested = new Unrested([
                 'text' => '',
                 'review_id' => $review_id
@@ -114,7 +114,7 @@ class ReviewController extends Controller
     public function getUnrested(Request $request)
     {
         $review_id = $request->input('review_id');
-        $unrested  = Unrested::where('review_id','=',$review_id)->get();
+        $unrested = Unrested::where('review_id', '=', $review_id)->get();
         return response()->json($unrested);
     }
 
@@ -130,9 +130,9 @@ class ReviewController extends Controller
     public function addSpecific($review_id)
     {
         $spec = new Specific([
-                'text' => '',
-                'review_id' => $review_id
-            ]);
+            'text' => '',
+            'review_id' => $review_id
+        ]);
         $spec->save();
 
     }
@@ -140,7 +140,7 @@ class ReviewController extends Controller
     public function getSpecific(Request $request)
     {
         $review_id = $request->input('review_id');
-        $specific  = Specific::where('review_id','=',$review_id)->get();
+        $specific = Specific::where('review_id', '=', $review_id)->get();
         return response()->json($specific);
     }
 
